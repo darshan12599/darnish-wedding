@@ -141,11 +141,6 @@ h2 em {
     );
 }
 
-/*
-   Hero content stays in the upper portion of the image.
-   This keeps the title away from the couple's faces.
-*/
-
 .moon-copy {
   position: absolute;
   top: 12%;
@@ -177,7 +172,7 @@ h2 em {
   letter-spacing: .48em;
 }
 
-/* Desktop / tablet button */
+/* Desktop ENTER button */
 
 .enter {
   display: block;
@@ -395,7 +390,7 @@ h2 em {
 }
 
 /* =========================================================
-   WEDDING DETAILS
+   WEDDING
    ========================================================= */
 
 .wedding {
@@ -541,6 +536,512 @@ h2 em {
   color: var(--muted);
   font-size: .55rem;
   letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   BILINGUAL
+   ========================================================= */
+
+.bilingual {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  padding-top: 2rem;
+  padding-bottom: 9rem;
+}
+
+.language-card {
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  background: rgba(75, 22, 32, .15);
+  border: 1px solid rgba(201, 164, 91, .16);
+  text-align: center;
+}
+
+.language-card .script {
+  color: var(--gold-soft);
+  font-family: "Noto Sans Devanagari", sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.language-card p {
+  max-width: 440px;
+  margin: 1.5rem 0 0;
+  color: #c7bdb2;
+  font-family: "Noto Sans Devanagari", sans-serif;
+  font-size: 1rem;
+}
+
+.language-card.gujarati .script,
+.language-card.gujarati p {
+  font-family: "Noto Sans Gujarati", sans-serif;
+}
+
+/* =========================================================
+   FINAL IMAGE
+   ========================================================= */
+
+.final-image {
+  position: relative;
+  min-height: 90svh;
+  overflow: hidden;
+}
+
+.final-image > img {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(.72) brightness(.72);
+}
+
+.final-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      transparent,
+      rgba(8, 7, 8, .7)
+    ),
+    linear-gradient(
+      180deg,
+      rgba(8, 7, 8, .2),
+      rgba(8, 7, 8, .82)
+    );
+}
+
+.final-copy {
+  position: absolute;
+  left: 7vw;
+  bottom: 10%;
+  z-index: 2;
+}
+
+.final-copy h2 {
+  margin: .8rem 0 1rem;
+  color: var(--white);
+  font-size: clamp(3.4rem, 7vw, 7rem);
+}
+
+.final-date {
+  margin: 0;
+  color: #dfd1bf;
+  letter-spacing: .42em;
+  font-size: .7rem;
+}
+
+.hashtag {
+  margin: 1.2rem 0 0;
+  color: var(--gold-soft);
+  font-size: .72rem;
+  letter-spacing: .12em;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+  padding: 3rem 1.5rem;
+  color: #8e8379;
+  background: #0b0a09;
+  text-align: center;
+  font-size: .75rem;
+}
+
+footer p {
+  margin: .35rem 0;
+}
+
+footer .tiny {
+  color: #5f574f;
+  letter-spacing: .25em;
+}
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes heroContent {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: .45;
+    transform: scale(.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+  .section {
+    padding: 6.5rem 7vw;
+  }
+
+  .story {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  .story-image {
+    max-width: 620px;
+    width: 100%;
+    margin: auto;
+  }
+
+  .story-copy {
+    max-width: 680px;
+    margin: auto;
+  }
+
+  .wedding-card {
+    grid-template-columns: 1fr;
+    gap: 2.2rem;
+    padding: 3rem 1.5rem;
+    text-align: center;
+  }
+
+  .gold-line {
+    width: 100%;
+    height: 1px;
+    background:
+      linear-gradient(
+        90deg,
+        transparent,
+        var(--gold),
+        transparent
+      );
+  }
+
+  .details {
+    text-align: center;
+  }
+
+  .bilingual {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .hero {
+    min-height: 100svh;
+  }
+
+  .hero-photo {
+    background-position: center 42%;
+    transform: scale(1.01);
+  }
+
+  .hero-overlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(7, 6, 7, .70) 0%,
+        rgba(7, 6, 7, .18) 25%,
+        rgba(7, 6, 7, .04) 48%,
+        rgba(7, 6, 7, .78) 100%
+      );
+  }
+
+  /*
+     MOBILE HERO
+
+     The moon-copy now covers most of the hero height.
+     This gives the ENTER button a safe positioning area.
+  */
+
+  .moon-copy {
+    position: absolute;
+    top: 9%;
+    left: 7vw;
+    width: 86vw;
+    height: 82vh;
+    z-index: 2;
+    text-align: left;
+  }
+
+  .hero h1 {
+    max-width: 340px;
+    margin-top: .75rem;
+    font-size: clamp(3.45rem, 16vw, 5.2rem);
+    line-height: .82;
+  }
+
+  .hero .eyebrow {
+    font-size: .5rem;
+    letter-spacing: .28em;
+  }
+
+  .date {
+    margin-top: 1.2rem;
+    margin-bottom: 1.6rem;
+    font-size: .58rem;
+    letter-spacing: .30em;
+  }
+
+  /*
+     ENTER OUR STORY
+
+     Positioned near the bottom of the hero.
+     Centered horizontally.
+     It no longer sits over either face.
+  */
+
+  .enter {
+    position: absolute;
+    top: 72vh;
+    left: 50%;
+    margin: 0;
+    padding: .85rem 1.3rem;
+    white-space: nowrap;
+    font-size: .82rem;
+    transform: translateX(-50%);
+  }
+
+  .enter:hover {
+    transform: translateX(-50%) translateY(-2px);
+  }
+
+  .music {
+    top: 1rem;
+    right: 1rem;
+    padding: .55rem .75rem;
+    font-size: .72rem;
+  }
+
+  .section {
+    padding: 5.5rem 7vw;
+  }
+
+  h2 {
+    font-size: clamp(3rem, 15vw, 4.8rem);
+  }
+
+  /* PERSONAL INVITATION */
+
+  .personal-invite {
+    padding-top: 5.5rem;
+    padding-bottom: 5rem;
+  }
+
+  .personal-invite h2 {
+    font-size: clamp(2.8rem, 13vw, 4.4rem);
+  }
+
+  .lead {
+    font-size: .9rem;
+  }
+
+  .invite-date {
+    font-size: .58rem;
+  }
+
+  /* QUOTE */
+
+  .quote {
+    padding-top: 2rem;
+    padding-bottom: 6rem;
+  }
+
+  .quote blockquote {
+    font-size: clamp(2.2rem, 11vw, 3.5rem);
+  }
+
+  /* STORY */
+
+  .story {
+    gap: 3rem;
+  }
+
+  .story-image {
+    max-width: 92%;
+  }
+
+  /* VISUAL BREAK */
+
+  .visual-break {
+    height: 62svh;
+    min-height: 430px;
+  }
+
+  .visual-caption {
+    right: 7vw;
+    left: 7vw;
+    bottom: 7%;
+    max-width: none;
+    font-size: 1.7rem;
+    text-align: left;
+  }
+
+  /* WEDDING */
+
+  .wedding {
+    padding-top: 6rem;
+  }
+
+  .wedding-card {
+    margin-top: 2.5rem;
+    padding: 2.8rem 1.1rem;
+  }
+
+  .date-large .day,
+  .date-large .year {
+    font-size: 4.8rem;
+    line-height: .72;
+  }
+
+  .date-large small {
+    margin: 1.55rem 0 1.45rem;
+    font-size: .62rem;
+    letter-spacing: .25em;
+    line-height: 1;
+  }
+
+  .detail-value {
+    font-size: 1.85rem;
+  }
+
+  .address {
+    font-size: .72rem;
+  }
+
+  /* COUNTDOWN */
+
+  .timer {
+    grid-template-columns: repeat(2, 1fr);
+    gap: .8rem;
+    margin-top: 2.2rem;
+  }
+
+  .timer > div {
+    padding: 1.25rem .4rem;
+  }
+
+  .timer span {
+    font-size: 2.8rem;
+  }
+
+  /* LANGUAGES */
+
+  .language-card {
+    min-height: 270px;
+    padding: 3rem 1.2rem;
+  }
+
+  .language-card p {
+    font-size: .92rem;
+  }
+
+  /* FINAL IMAGE */
+
+  .final-image {
+    min-height: 680px;
+  }
+
+  .final-copy {
+    left: 7vw;
+    right: 7vw;
+    bottom: 8%;
+  }
+
+  .final-copy h2 {
+    font-size: clamp(3.3rem, 14vw, 5rem);
+  }
+}
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 390px) {
+
+  .moon-copy {
+    top: 8%;
+    height: 84vh;
+  }
+
+  .hero h1 {
+    font-size: 3.25rem;
+  }
+
+  /*
+     Slightly lower on very small screens.
+  */
+
+  .enter {
+    top: 72vh;
+    left: 50%;
+    margin: 0;
+    padding: .78rem 1.1rem;
+    font-size: .78rem;
+    transform: translateX(-50%);
+  }
+
+  .enter:hover {
+    transform: translateX(-50%) translateY(-2px);
+  }
+
+  .date-large .day,
+  .date-large .year {
+    font-size: 4.35rem;
+  }
+
+  .date-large small {
+    margin: 1.45rem 0 1.35rem;
+    letter-spacing: .22em;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+  }m;
   text-transform: uppercase;
 }
 
