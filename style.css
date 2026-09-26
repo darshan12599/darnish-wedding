@@ -1087,3 +1087,107 @@ footer .tiny {
     font-size:.45rem
   }
 }
+/* =========================
+   FINAL MOBILE HERO FIX
+   Keep faces unobstructed
+   ========================= */
+
+@media (max-width: 700px) {
+
+  .hero {
+    min-height: 100svh;
+    height: 100svh;
+  }
+
+  .hero-photo {
+    background-position: center 43%;
+    transform: scale(1.025);
+    filter:
+      saturate(.72)
+      contrast(1.03)
+      brightness(.98);
+  }
+
+  .hero-overlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(5,4,7,.04) 0%,
+        rgba(5,4,7,.03) 35%,
+        rgba(5,4,7,.12) 58%,
+        rgba(5,4,7,.72) 100%
+      );
+  }
+
+  /*
+     Move all cover typography upward.
+     This places the names in the dark
+     empty area above the couple.
+  */
+
+  .moon-copy {
+    position: absolute;
+    top: 31%;
+    left: 0;
+    right: 0;
+    transform: translateY(0);
+    padding: 1rem 1.25rem;
+  }
+
+  .hero .eyebrow {
+    margin-bottom: 1rem;
+    font-size: .50rem;
+    letter-spacing: .32em;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.15rem, 15vw, 5.2rem);
+    line-height: .82;
+    letter-spacing: -.045em;
+  }
+
+  .hero h1 span {
+    font-size: .42em;
+  }
+
+  .hero .date {
+    margin: 1.35rem 0 1.8rem;
+    font-size: .58rem;
+    letter-spacing: .32em;
+  }
+
+  .enter {
+    padding: .85rem 1.25rem;
+    font-size: .55rem;
+  }
+
+  /*
+     Keep music away from the typography.
+  */
+
+  .music {
+    top: 1rem;
+    right: 1rem;
+  }
+}
+
+
+/* =========================
+   VERY SMALL PHONES
+   ========================= */
+
+@media (max-width: 390px) {
+
+  .moon-copy {
+    top: 30%;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+  }
+
+  .hero .date {
+    margin: 1.2rem 0 1.6rem;
+  }
+
+}
