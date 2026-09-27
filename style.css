@@ -1,0 +1,3830 @@
+:root {
+  --ivory: #f4efe7;
+  --charcoal: #11100f;
+  --burgundy: #4b1620;
+  --gold: #c9a45b;
+  --gold-soft: #e0c98f;
+  --muted: #a99e92;
+  --white: #fffaf2;
+  --max: 1180px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--charcoal);
+  color: var(--ivory);
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: .045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+}
+
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
+
+h1,
+h2,
+blockquote {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 500;
+  letter-spacing: -.025em;
+}
+
+h2 {
+  margin: .55rem 0 1.5rem;
+  font-size: clamp(3rem, 7vw, 6.4rem);
+  line-height: .9;
+}
+
+h2 em {
+  color: var(--gold-soft);
+  font-style: italic;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--gold-soft);
+  font-size: .62rem;
+  font-weight: 500;
+  letter-spacing: .38em;
+  text-transform: uppercase;
+}
+
+.lead {
+  max-width: 620px;
+  margin: 0 auto;
+  color: #c7bdb2;
+  font-size: 1rem;
+}
+
+.section {
+  width: min(100%, var(--max));
+  margin: 0 auto;
+  padding: 8rem 7vw;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  isolation: isolate;
+  overflow: hidden;
+  background: #080708;
+}
+
+.hero-photo {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background: url("images/moon-hero.png") center 43% / cover no-repeat;
+  transform: scale(1.015);
+  filter: saturate(.72) contrast(1.05) brightness(.94);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, .04) 30%,
+      rgba(0, 0, 0, .35) 78%,
+      rgba(0, 0, 0, .72) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(8, 7, 8, .62) 0%,
+      rgba(8, 7, 8, .08) 28%,
+      rgba(8, 7, 8, .02) 50%,
+      rgba(8, 7, 8, .72) 100%
+    );
+}
+
+.moon-copy {
+  position: absolute;
+  top: 12%;
+  left: 7vw;
+  width: min(760px, 86vw);
+  z-index: 2;
+  text-align: left;
+  animation: heroContent 1.1s ease both;
+}
+
+.hero h1 {
+  margin: .8rem 0 0;
+  color: var(--white);
+  font-size: clamp(4rem, 8vw, 7.8rem);
+  line-height: .82;
+  text-shadow: 0 4px 28px rgba(0, 0, 0, .35);
+}
+
+.hero h1 span,
+.final-copy h2 span {
+  color: var(--gold-soft);
+  font-weight: 400;
+}
+
+.date {
+  margin: 1.4rem 0 2rem;
+  color: #dfd1bf;
+  font-size: .7rem;
+  letter-spacing: .48em;
+}
+
+/* Desktop ENTER button */
+
+.enter {
+  display: block;
+  margin-left: 8rem;
+  border: 1px solid rgba(224, 201, 143, .58);
+  border-radius: 999px;
+  padding: .95rem 1.45rem;
+  color: var(--ivory);
+  background: rgba(17, 16, 15, .32);
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+  transition: .3s ease;
+}
+
+.enter span {
+  margin-left: .6rem;
+  color: var(--gold-soft);
+}
+
+.enter:hover {
+  background: rgba(201, 164, 91, .15);
+  border-color: var(--gold-soft);
+  transform: translateY(-2px);
+}
+
+.music {
+  position: absolute;
+  top: 1.4rem;
+  right: 1.4rem;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  border: 1px solid rgba(224, 201, 143, .42);
+  border-radius: 999px;
+  padding: .6rem .85rem;
+  color: var(--ivory);
+  background: rgba(17, 16, 15, .28);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+}
+
+.music-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 12px rgba(201, 164, 91, .75);
+}
+
+.music.is-playing .music-dot {
+  animation: pulse 1.2s infinite;
+}
+
+/* =========================================================
+   PERSONAL INVITATION
+   ========================================================= */
+
+.personal-invite {
+  text-align: center;
+  padding-top: 7rem;
+  padding-bottom: 6rem;
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(75, 22, 32, .28),
+      transparent 55%
+    );
+}
+
+.personal-invite h2 {
+  font-size: clamp(3.1rem, 7vw, 6rem);
+}
+
+#guestGreeting {
+  color: var(--ivory);
+}
+
+.invite-line {
+  width: 70px;
+  height: 1px;
+  margin: 2.2rem auto 0;
+  background: var(--gold);
+}
+
+.invite-date {
+  margin: 2rem 0 0;
+  color: var(--gold-soft);
+  font-size: .65rem;
+  letter-spacing: .35em;
+}
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.intro {
+  text-align: center;
+  padding-top: 5rem;
+  padding-bottom: 7rem;
+}
+
+/* =========================================================
+   QUOTE
+   ========================================================= */
+
+.quote {
+  max-width: 900px;
+  text-align: center;
+  padding-top: 3rem;
+  padding-bottom: 9rem;
+}
+
+.ornament {
+  margin-bottom: 1.2rem;
+  color: var(--gold);
+  font-size: 1.2rem;
+}
+
+.quote blockquote {
+  margin: 0;
+  color: var(--ivory);
+  font-size: clamp(2.3rem, 5vw, 4.5rem);
+  line-height: .98;
+}
+
+.quote cite {
+  display: block;
+  margin-top: 1.5rem;
+  color: var(--muted);
+  font-size: .8rem;
+}
+
+/* =========================================================
+   STORY
+   ========================================================= */
+
+.story {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(3rem, 7vw, 8rem);
+}
+
+.image-frame {
+  padding: 10px;
+  border: 1px solid rgba(201, 164, 91, .28);
+  background: rgba(201, 164, 91, .04);
+}
+
+.image-frame img {
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.story-copy p:not(.eyebrow):not(.poetic) {
+  max-width: 590px;
+  color: #c5bbb0;
+}
+
+.story-copy strong {
+  color: var(--gold-soft);
+  font-weight: 500;
+}
+
+.poetic {
+  margin-top: 2rem;
+  color: var(--ivory);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
+/* =========================================================
+   VISUAL BREAK
+   ========================================================= */
+
+.visual-break {
+  position: relative;
+  height: 75svh;
+  min-height: 520px;
+  overflow: hidden;
+}
+
+.visual-break img {
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(.72) contrast(1.04) brightness(.78);
+}
+
+.visual-break::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(10, 9, 9, .15),
+      rgba(10, 9, 9, .62)
+    );
+}
+
+.visual-caption {
+  position: absolute;
+  right: 7vw;
+  bottom: 8%;
+  z-index: 2;
+  max-width: 360px;
+  color: var(--ivory);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  line-height: 1;
+  text-align: right;
+}
+
+/* =========================================================
+   WEDDING
+   ========================================================= */
+
+.wedding {
+  text-align: center;
+  padding-top: 9rem;
+}
+
+.wedding-card {
+  display: grid;
+  grid-template-columns: 270px 1px minmax(0, 1fr);
+  align-items: center;
+  gap: 3rem;
+  margin-top: 3.5rem;
+  padding: 4rem;
+  border: 1px solid rgba(201, 164, 91, .28);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(75, 22, 32, .23),
+      rgba(255, 255, 255, .025)
+    );
+  text-align: left;
+}
+
+.date-large {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  text-align: center;
+}
+
+.date-large .day,
+.date-large .year {
+  display: block;
+  margin: 0;
+  color: var(--ivory);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(5rem, 8vw, 7rem);
+  font-weight: 500;
+  line-height: .75;
+}
+
+.date-large small {
+  display: block;
+  margin: 1.45rem 0 1.35rem;
+  color: var(--gold-soft);
+  font-size: .68rem;
+  font-weight: 500;
+  letter-spacing: .30em;
+  line-height: 1;
+}
+
+.gold-line {
+  width: 1px;
+  height: 180px;
+  background:
+    linear-gradient(
+      transparent,
+      var(--gold),
+      transparent
+    );
+}
+
+.details {
+  min-width: 0;
+}
+
+.detail-label {
+  margin: 0 0 .15rem;
+  color: var(--gold-soft);
+  font-size: .6rem;
+  font-weight: 500;
+  letter-spacing: .28em;
+}
+
+.detail-value {
+  margin: 0 0 1.8rem;
+  color: var(--ivory);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2.1rem;
+  line-height: 1;
+}
+
+.address {
+  margin: 0;
+  color: #b9aea3;
+  font-size: .82rem;
+  line-height: 1.8;
+}
+
+.map-link {
+  display: inline-block;
+  margin-top: 1.6rem;
+  color: var(--gold-soft);
+  font-size: .7rem;
+  letter-spacing: .08em;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(224, 201, 143, .35);
+  padding-bottom: .25rem;
+}
+
+.map-link:hover {
+  border-color: var(--gold-soft);
+}
+
+/* =========================================================
+   COUNTDOWN
+   ========================================================= */
+
+.countdown {
+  text-align: center;
+  padding-top: 6rem;
+  padding-bottom: 9rem;
+}
+
+.timer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  max-width: 800px;
+  margin: 3rem auto 0;
+}
+
+.timer > div {
+  padding: 1.4rem .5rem;
+  border-top: 1px solid rgba(201, 164, 91, .28);
+  border-bottom: 1px solid rgba(201, 164, 91, .12);
+}
+
+.timer span {
+  display: block;
+  color: var(--ivory);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  line-height: .9;
+}
+
+.timer small {
+  display: block;
+  margin-top: .8rem;
+  color: var(--muted);
+  font-size: .55rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   BILINGUAL
+   ========================================================= */
+
+.bilingual {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  padding-top: 2rem;
+  padding-bottom: 9rem;
+}
+
+.language-card {
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  background: rgba(75, 22, 32, .15);
+  border: 1px solid rgba(201, 164, 91, .16);
+  text-align: center;
+}
+
+.language-card .script {
+  color: var(--gold-soft);
+  font-family: "Noto Sans Devanagari", sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.language-card p {
+  max-width: 440px;
+  margin: 1.5rem 0 0;
+  color: #c7bdb2;
+  font-family: "Noto Sans Devanagari", sans-serif;
+  font-size: 1rem;
+}
+
+.language-card.gujarati .script,
+.language-card.gujarati p {
+  font-family: "Noto Sans Gujarati", sans-serif;
+}
+
+/* =========================================================
+   FINAL IMAGE
+   ========================================================= */
+
+.final-image {
+  position: relative;
+  min-height: 90svh;
+  overflow: hidden;
+}
+
+.final-image > img {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(.72) brightness(.72);
+}
+
+.final-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      transparent,
+      rgba(8, 7, 8, .7)
+    ),
+    linear-gradient(
+      180deg,
+      rgba(8, 7, 8, .2),
+      rgba(8, 7, 8, .82)
+    );
+}
+
+.final-copy {
+  position: absolute;
+  left: 7vw;
+  bottom: 10%;
+  z-index: 2;
+}
+
+.final-copy h2 {
+  margin: .8rem 0 1rem;
+  color: var(--white);
+  font-size: clamp(3.4rem, 7vw, 7rem);
+}
+
+.final-date {
+  margin: 0;
+  color: #dfd1bf;
+  letter-spacing: .42em;
+  font-size: .7rem;
+}
+
+.hashtag {
+  margin: 1.2rem 0 0;
+  color: var(--gold-soft);
+  font-size: .72rem;
+  letter-spacing: .12em;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+  padding: 3rem 1.5rem;
+  color: #8e8379;
+  background: #0b0a09;
+  text-align: center;
+  font-size: .75rem;
+}
+
+footer p {
+  margin: .35rem 0;
+}
+
+footer .tiny {
+  color: #5f574f;
+  letter-spacing: .25em;
+}
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes heroContent {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: .45;
+    transform: scale(.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+  .section {
+    padding: 6.5rem 7vw;
+  }
+
+  .story {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  .story-image {
+    max-width: 620px;
+    width: 100%;
+    margin: auto;
+  }
+
+  .story-copy {
+    max-width: 680px;
+    margin: auto;
+  }
+
+  .wedding-card {
+    grid-template-columns: 1fr;
+    gap: 2.2rem;
+    padding: 3rem 1.5rem;
+    text-align: center;
+  }
+
+  .gold-line {
+    width: 100%;
+    height: 1px;
+    background:
+      linear-gradient(
+        90deg,
+        transparent,
+        var(--gold),
+        transparent
+      );
+  }
+
+  .details {
+    text-align: center;
+  }
+
+  .bilingual {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .hero {
+    min-height: 100svh;
+  }
+
+  .hero-photo {
+    background-position: center 42%;
+    transform: scale(1.01);
+  }
+
+  .hero-overlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(7, 6, 7, .70) 0%,
+        rgba(7, 6, 7, .18) 25%,
+        rgba(7, 6, 7, .04) 48%,
+        rgba(7, 6, 7, .78) 100%
+      );
+  }
+
+  /*
+     MOBILE HERO
+
+     The moon-copy now covers most of the hero height.
+     This gives the ENTER button a safe positioning area.
+  */
+
+  .moon-copy {
+    position: absolute;
+    top: 9%;
+    left: 7vw;
+    width: 86vw;
+    height: 82vh;
+    z-index: 2;
+    text-align: left;
+  }
+
+  .hero h1 {
+    max-width: 340px;
+    margin-top: .75rem;
+    font-size: clamp(3.45rem, 16vw, 5.2rem);
+    line-height: .82;
+  }
+
+  .hero .eyebrow {
+    font-size: .5rem;
+    letter-spacing: .28em;
+  }
+
+  .date {
+    margin-top: 1.2rem;
+    margin-bottom: 1.6rem;
+    font-size: .58rem;
+    letter-spacing: .30em;
+  }
+
+  /*
+     ENTER OUR STORY
+
+     Positioned near the bottom of the hero.
+     Centered horizontally.
+     It no longer sits over either face.
+  */
+
+  .enter {
+    position: absolute;
+    top: 72vh;
+    left: 50%;
+    margin: 0;
+    padding: .85rem 1.3rem;
+    white-space: nowrap;
+    font-size: .82rem;
+    transform: translateX(-50%);
+  }
+
+  .enter:hover {
+    transform: translateX(-50%) translateY(-2px);
+  }
+
+  .music {
+    top: 1rem;
+    right: 1rem;
+    padding: .55rem .75rem;
+    font-size: .72rem;
+  }
+
+  .section {
+    padding: 5.5rem 7vw;
+  }
+
+  h2 {
+    font-size: clamp(3rem, 15vw, 4.8rem);
+  }
+
+  /* PERSONAL INVITATION */
+
+  .personal-invite {
+    padding-top: 5.5rem;
+    padding-bottom: 5rem;
+  }
+
+  .personal-invite h2 {
+    font-size: clamp(2.8rem, 13vw, 4.4rem);
+  }
+
+  .lead {
+    font-size: .9rem;
+  }
+
+  .invite-date {
+    font-size: .58rem;
+  }
+
+  /* QUOTE */
+
+  .quote {
+    padding-top: 2rem;
+    padding-bottom: 6rem;
+  }
+
+  .quote blockquote {
+    font-size: clamp(2.2rem, 11vw, 3.5rem);
+  }
+
+  /* STORY */
+
+  .story {
+    gap: 3rem;
+  }
+
+  .story-image {
+    max-width: 92%;
+  }
+
+  /* VISUAL BREAK */
+
+  .visual-break {
+    height: 62svh;
+    min-height: 430px;
+  }
+
+  .visual-caption {
+    right: 7vw;
+    left: 7vw;
+    bottom: 7%;
+    max-width: none;
+    font-size: 1.7rem;
+    text-align: left;
+  }
+
+  /* WEDDING */
+
+  .wedding {
+    padding-top: 6rem;
+  }
+
+  .wedding-card {
+    margin-top: 2.5rem;
+    padding: 2.8rem 1.1rem;
+  }
+
+  .date-large .day,
+  .date-large .year {
+    font-size: 4.8rem;
+    line-height: .72;
+  }
+
+  .date-large small {
+    margin: 1.55rem 0 1.45rem;
+    font-size: .62rem;
+    letter-spacing: .25em;
+    line-height: 1;
+  }
+
+  .detail-value {
+    font-size: 1.85rem;
+  }
+
+  .address {
+    font-size: .72rem;
+  }
+
+  /* COUNTDOWN */
+
+  .timer {
+    grid-template-columns: repeat(2, 1fr);
+    gap: .8rem;
+    margin-top: 2.2rem;
+  }
+
+  .timer > div {
+    padding: 1.25rem .4rem;
+  }
+
+  .timer span {
+    font-size: 2.8rem;
+  }
+
+  /* LANGUAGES */
+
+  .language-card {
+    min-height: 270px;
+    padding: 3rem 1.2rem;
+  }
+
+  .language-card p {
+    font-size: .92rem;
+  }
+
+  /* FINAL IMAGE */
+
+  .final-image {
+    min-height: 680px;
+  }
+
+  .final-copy {
+    left: 7vw;
+    right: 7vw;
+    bottom: 8%;
+  }
+
+  .final-copy h2 {
+    font-size: clamp(3.3rem, 14vw, 5rem);
+  }
+}
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 390px) {
+
+  .moon-copy {
+    top: 8%;
+    height: 84vh;
+  }
+
+  .hero h1 {
+    font-size: 3.25rem;
+  }
+
+  /*
+     Slightly lower on very small screens.
+  */
+
+  .enter {
+    top: 72vh;
+    left: 50%;
+    margin: 0;
+    padding: .78rem 1.1rem;
+    font-size: .78rem;
+    transform: translateX(-50%);
+  }
+
+  .enter:hover {
+    transform: translateX(-50%) translateY(-2px);
+  }
+
+  .date-large .day,
+  .date-large .year {
+    font-size: 4.35rem;
+  }
+
+  .date-large small {
+    margin: 1.45rem 0 1.35rem;
+    letter-spacing: .22em;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+  }m;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   BILINGUAL
+   ========================================================= */
+
+.bilingual {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  padding-top: 2rem;
+  padding-bottom: 9rem;
+}
+
+.language-card {
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  background: rgba(75, 22, 32, .15);
+  border: 1px solid rgba(201, 164, 91, .16);
+  text-align: center;
+}
+
+.language-card .script {
+  color: var(--gold-soft);
+  font-family: "Noto Sans Devanagari", sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.language-card p {
+  max-width: 440px;
+  margin: 1.5rem 0 0;
+  color: #c7bdb2;
+  font-family: "Noto Sans Devanagari", sans-serif;
+  font-size: 1rem;
+}
+
+.language-card.gujarati .script,
+.language-card.gujarati p {
+  font-family: "Noto Sans Gujarati", sans-serif;
+}
+
+/* =========================================================
+   FINAL IMAGE
+   ========================================================= */
+
+.final-image {
+  position: relative;
+  min-height: 90svh;
+  overflow: hidden;
+}
+
+.final-image > img {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(.72) brightness(.72);
+}
+
+.final-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      transparent,
+      rgba(8, 7, 8, .7)
+    ),
+    linear-gradient(
+      180deg,
+      rgba(8, 7, 8, .2),
+      rgba(8, 7, 8, .82)
+    );
+}
+
+.final-copy {
+  position: absolute;
+  left: 7vw;
+  bottom: 10%;
+  z-index: 2;
+}
+
+.final-copy h2 {
+  margin: .8rem 0 1rem;
+  color: var(--white);
+  font-size: clamp(3.4rem, 7vw, 7rem);
+}
+
+.final-date {
+  margin: 0;
+  color: #dfd1bf;
+  letter-spacing: .42em;
+  font-size: .7rem;
+}
+
+.hashtag {
+  margin: 1.2rem 0 0;
+  color: var(--gold-soft);
+  font-size: .72rem;
+  letter-spacing: .12em;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+  padding: 3rem 1.5rem;
+  color: #8e8379;
+  background: #0b0a09;
+  text-align: center;
+  font-size: .75rem;
+}
+
+footer p {
+  margin: .35rem 0;
+}
+
+footer .tiny {
+  color: #5f574f;
+  letter-spacing: .25em;
+}
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes heroContent {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: .45;
+    transform: scale(.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 850px) {
+  .section {
+    padding: 6.5rem 7vw;
+  }
+
+  .story {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  .story-image {
+    max-width: 620px;
+    width: 100%;
+    margin: auto;
+  }
+
+  .story-copy {
+    max-width: 680px;
+    margin: auto;
+  }
+
+  .wedding-card {
+    grid-template-columns: 1fr;
+    gap: 2.2rem;
+    padding: 3rem 1.5rem;
+    text-align: center;
+  }
+
+  .gold-line {
+    width: 100%;
+    height: 1px;
+    background:
+      linear-gradient(
+        90deg,
+        transparent,
+        var(--gold),
+        transparent
+      );
+  }
+
+  .details {
+    text-align: center;
+  }
+
+  .bilingual {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .hero {
+    min-height: 100svh;
+  }
+
+  .hero-photo {
+    background-position: center 42%;
+    transform: scale(1.01);
+  }
+
+  .hero-overlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(7, 6, 7, .70) 0%,
+        rgba(7, 6, 7, .18) 25%,
+        rgba(7, 6, 7, .04) 48%,
+        rgba(7, 6, 7, .78) 100%
+      );
+  }
+
+  /*
+     MOBILE HERO POSITIONING
+
+     The text remains on the upper-left.
+     The button is independently pushed to the right edge
+     so it does not sit over Darshan's face.
+  */
+
+  .moon-copy {
+    top: 9%;
+    left: 7vw;
+    width: 86vw;
+    text-align: left;
+  }
+
+  .hero h1 {
+    max-width: 340px;
+    margin-top: .75rem;
+    font-size: clamp(3.45rem, 16vw, 5.2rem);
+    line-height: .82;
+  }
+
+  .hero .eyebrow {
+    font-size: .5rem;
+    letter-spacing: .28em;
+  }
+
+  .date {
+    margin-top: 1.2rem;
+    margin-bottom: 1.6rem;
+    font-size: .58rem;
+    letter-spacing: .30em;
+  }
+
+  /*
+     IMPORTANT:
+     Do NOT use margin-left here.
+     margin-left:auto pushes the button to the right
+     within the moon-copy container.
+  */
+
+  .enter {
+    width: max-content;
+    margin-left: auto;
+    margin-right: 0;
+    padding: .82rem 1.15rem;
+    font-size: .8rem;
+  }
+
+  .music {
+    top: 1rem;
+    right: 1rem;
+    padding: .55rem .75rem;
+    font-size: .72rem;
+  }
+
+  .section {
+    padding: 5.5rem 7vw;
+  }
+
+  h2 {
+    font-size: clamp(3rem, 15vw, 4.8rem);
+  }
+
+  /* PERSONAL INVITATION */
+
+  .personal-invite {
+    padding-top: 5.5rem;
+    padding-bottom: 5rem;
+  }
+
+  .personal-invite h2 {
+    font-size: clamp(2.8rem, 13vw, 4.4rem);
+  }
+
+  .lead {
+    font-size: .9rem;
+  }
+
+  .invite-date {
+    font-size: .58rem;
+  }
+
+  /* QUOTE */
+
+  .quote {
+    padding-top: 2rem;
+    padding-bottom: 6rem;
+  }
+
+  .quote blockquote {
+    font-size: clamp(2.2rem, 11vw, 3.5rem);
+  }
+
+  /* STORY */
+
+  .story {
+    gap: 3rem;
+  }
+
+  .story-image {
+    max-width: 92%;
+  }
+
+  /* VISUAL BREAK */
+
+  .visual-break {
+    height: 62svh;
+    min-height: 430px;
+  }
+
+  .visual-caption {
+    right: 7vw;
+    left: 7vw;
+    bottom: 7%;
+    max-width: none;
+    font-size: 1.7rem;
+    text-align: left;
+  }
+
+  /* WEDDING */
+
+  .wedding {
+    padding-top: 6rem;
+  }
+
+  .wedding-card {
+    margin-top: 2.5rem;
+    padding: 2.8rem 1.1rem;
+  }
+
+  .date-large .day,
+  .date-large .year {
+    font-size: 4.8rem;
+    line-height: .72;
+  }
+
+  .date-large small {
+    margin: 1.55rem 0 1.45rem;
+    font-size: .62rem;
+    letter-spacing: .25em;
+    line-height: 1;
+  }
+
+  .detail-value {
+    font-size: 1.85rem;
+  }
+
+  .address {
+    font-size: .72rem;
+  }
+
+  /* COUNTDOWN */
+
+  .timer {
+    grid-template-columns: repeat(2, 1fr);
+    gap: .8rem;
+    margin-top: 2.2rem;
+  }
+
+  .timer > div {
+    padding: 1.25rem .4rem;
+  }
+
+  .timer span {
+    font-size: 2.8rem;
+  }
+
+  /* LANGUAGES */
+
+  .language-card {
+    min-height: 270px;
+    padding: 3rem 1.2rem;
+  }
+
+  .language-card p {
+    font-size: .92rem;
+  }
+
+  /* FINAL IMAGE */
+
+  .final-image {
+    min-height: 680px;
+  }
+
+  .final-copy {
+    left: 7vw;
+    right: 7vw;
+    bottom: 8%;
+  }
+
+  .final-copy h2 {
+    font-size: clamp(3.3rem, 14vw, 5rem);
+  }
+}
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 390px) {
+
+  .moon-copy {
+    top: 8%;
+  }
+
+  .hero h1 {
+    font-size: 3.25rem;
+  }
+
+  /*
+     Keep button completely to the right on very
+     small screens as well.
+  */
+
+  .enter {
+    width: max-content;
+    margin-left: auto;
+    margin-right: 0;
+    padding: .75rem 1rem;
+  }
+
+  .date-large .day,
+  .date-large .year {
+    font-size: 4.35rem;
+  }
+
+  .date-large small {
+    margin: 1.45rem 0 1.35rem;
+    letter-spacing: .22em;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+   }1px solid rgba(201,164,91,.12);
+}
+
+.timer span {
+  display: block;
+  color: var(--ivory);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  line-height: .9;
+}
+
+.timer small {
+  display: block;
+  margin-top: .8rem;
+  color: var(--muted);
+  font-size: .55rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   BILINGUAL
+   ========================================================= */
+
+.bilingual {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  padding-top: 2rem;
+  padding-bottom: 9rem;
+}
+
+.language-card {
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  background: rgba(75,22,32,.15);
+  border: 1px solid rgba(201,164,91,.16);
+  text-align: center;
+}
+
+.language-card .script {
+  color: var(--gold-soft);
+  font-family: "Noto Sans Devanagari", sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.language-card p {
+  max-width: 440px;
+  margin: 1.5rem 0 0;
+  color: #c7bdb2;
+  font-family: "Noto Sans Devanagari", sans-serif;
+  font-size: 1rem;
+}
+
+.language-card.gujarati .script,
+.language-card.gujarati p {
+  font-family: "Noto Sans Gujarati", sans-serif;
+}
+
+/* =========================================================
+   FINAL IMAGE
+   ========================================================= */
+
+.final-image {
+  position: relative;
+  min-height: 90svh;
+  overflow: hidden;
+}
+
+.final-image > img {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(.72) brightness(.72);
+}
+
+.final-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 35%, transparent, rgba(8,7,8,.7)),
+    linear-gradient(180deg, rgba(8,7,8,.2), rgba(8,7,8,.82));
+}
+
+.final-copy {
+  position: absolute;
+  left: 7vw;
+  bottom: 10%;
+  z-index: 2;
+}
+
+.final-copy h2 {
+  margin: .8rem 0 1rem;
+  color: var(--white);
+  font-size: clamp(3.4rem, 7vw, 7rem);
+}
+
+.final-date {
+  margin: 0;
+  color: #dfd1bf;
+  letter-spacing: .42em;
+  font-size: .7rem;
+}
+
+.hashtag {
+  margin: 1.2rem 0 0;
+  color: var(--gold-soft);
+  font-size: .72rem;
+  letter-spacing: .12em;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+  padding: 3rem 1.5rem;
+  color: #8e8379;
+  background: #0b0a09;
+  text-align: center;
+  font-size: .75rem;
+}
+
+footer p {
+  margin: .35rem 0;
+}
+
+footer .tiny {
+  color: #5f574f;
+  letter-spacing: .25em;
+}
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes heroContent {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: .45;
+    transform: scale(.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 850px) {
+  .section {
+    padding: 6.5rem 7vw;
+  }
+
+  .story {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  .story-image {
+    max-width: 620px;
+    width: 100%;
+    margin: auto;
+  }
+
+  .story-copy {
+    max-width: 680px;
+    margin: auto;
+  }
+
+  .wedding-card {
+    grid-template-columns: 1fr;
+    gap: 2.2rem;
+    padding: 3rem 1.5rem;
+    text-align: center;
+  }
+
+  .gold-line {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--gold),
+      transparent
+    );
+  }
+
+  .details {
+    text-align: center;
+  }
+
+  .bilingual {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .hero {
+    min-height: 100svh;
+  }
+
+  .hero-photo {
+    background-position: center 42%;
+    transform: scale(1.01);
+  }
+
+  .hero-overlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(7,6,7,.70) 0%,
+        rgba(7,6,7,.18) 25%,
+        rgba(7,6,7,.04) 48%,
+        rgba(7,6,7,.78) 100%
+      );
+  }
+
+  /*
+     Mobile hero title:
+     high enough to avoid covering the couple's faces.
+  */
+  .moon-copy {
+    top: 9%;
+    left: 7vw;
+    width: 86vw;
+    text-align: left;
+  }
+
+  .hero h1 {
+    max-width: 340px;
+    margin-top: .75rem;
+    font-size: clamp(3.45rem, 16vw, 5.2rem);
+    line-height: .82;
+  }
+
+  .hero .eyebrow {
+    font-size: .5rem;
+    letter-spacing: .28em;
+  }
+
+  .date {
+    margin-top: 1.2rem;
+    margin-bottom: 1.6rem;
+    font-size: .58rem;
+    letter-spacing: .30em;
+  }
+
+  .enter {
+    padding: .82rem 1.15rem;
+    font-size: .8rem;
+  }
+
+  .enter {
+    margin-left: 5rem;
+  }
+
+  .music {
+    top: 1rem;
+    right: 1rem;
+    padding: .55rem .75rem;
+    font-size: .72rem;
+  }
+
+  .section {
+    padding: 5.5rem 7vw;
+  }
+
+  h2 {
+    font-size: clamp(3rem, 15vw, 4.8rem);
+  }
+
+  .personal-invite {
+    padding-top: 5.5rem;
+    padding-bottom: 5rem;
+  }
+
+  .personal-invite h2 {
+    font-size: clamp(3rem, 14vw, 4.5rem);
+  }
+
+  .lead {
+    font-size: .9rem;
+  }
+
+  .invite-date {
+    font-size: .58rem;
+  }
+
+  .quote {
+    padding-top: 2rem;
+    padding-bottom: 6rem;
+  }
+
+  .quote blockquote {
+    font-size: clamp(2.2rem, 11vw, 3.5rem);
+  }
+
+  .story {
+    gap: 3rem;
+  }
+
+  .story-image {
+    max-width: 92%;
+  }
+
+  .visual-break {
+    height: 62svh;
+    min-height: 430px;
+  }
+
+  .visual-caption {
+    right: 7vw;
+    left: 7vw;
+    bottom: 7%;
+    max-width: none;
+    font-size: 1.7rem;
+    text-align: left;
+  }
+
+  .wedding {
+    padding-top: 6rem;
+  }
+
+  .wedding-card {
+    margin-top: 2.5rem;
+    padding: 2.8rem 1.1rem;
+  }
+
+  /*
+     The three date elements are deliberately separated.
+     This fixes the previous 29 / NOVEMBER / 2026 crowding.
+  */
+  .date-large .day,
+  .date-large .year {
+    font-size: 4.8rem;
+    line-height: .72;
+  }
+
+  .date-large small {
+    margin: 1.55rem 0 1.45rem;
+    font-size: .62rem;
+    letter-spacing: .25em;
+    line-height: 1;
+  }
+
+  .detail-value {
+    font-size: 1.85rem;
+  }
+
+  .address {
+    font-size: .72rem;
+  }
+
+  .timer {
+    grid-template-columns: repeat(2, 1fr);
+    gap: .8rem;
+    margin-top: 2.2rem;
+  }
+
+  .timer > div {
+    padding: 1.25rem .4rem;
+  }
+
+  .timer span {
+    font-size: 2.8rem;
+  }
+
+  .language-card {
+    min-height: 270px;
+    padding: 3rem 1.2rem;
+  }
+
+  .language-card p {
+    font-size: .92rem;
+  }
+
+  .final-image {
+    min-height: 680px;
+  }
+
+  .final-copy {
+    left: 7vw;
+    right: 7vw;
+    bottom: 8%;
+  }
+
+  .final-copy h2 {
+    font-size: clamp(3.3rem, 14vw, 5rem);
+  }
+}
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 390px) {
+  .moon-copy {
+    top: 8%;
+  }
+
+  .hero h1 {
+    font-size: 3.25rem;
+  }
+
+  .date-large .day,
+  .date-large .year {
+    font-size: 4.35rem;
+  }
+
+  .date-large small {
+    margin: 1.45rem 0 1.35rem;
+    letter-spacing: .22em;
+  }
+
+  .enter {
+    padding: .75rem 1rem;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+
+
+/* =========================================================
+   ELEGANT INVITATION OPENING
+   ========================================================= */
+
+.royal-opening{
+  position:fixed;inset:0;z-index:2000;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;overflow:hidden;isolation:isolate;
+  color:#321D1C;
+  background:
+    radial-gradient(circle at 50% 42%,rgba(216,189,130,.22),transparent 30%),
+    radial-gradient(circle at 18% 15%,rgba(100,26,40,.07),transparent 25%),
+    radial-gradient(circle at 82% 85%,rgba(100,26,40,.07),transparent 25%),
+    linear-gradient(135deg,#f9f2e6 0%,#f4ead9 48%,#efe1cc 100%);
+  transition:opacity 1.2s ease,visibility 1.2s ease;
+}
+.royal-opening::before{content:"";position:absolute;inset:15px;border:1px solid rgba(185,145,75,.58);pointer-events:none}
+.royal-opening::after{content:"";position:absolute;inset:23px;border:1px solid rgba(185,145,75,.20);pointer-events:none}
+.opening-border{position:absolute;inset:38px;border:1px solid rgba(100,26,40,.12);pointer-events:none}
+.border-corner{position:absolute;width:70px;height:70px;display:flex;align-items:center;justify-content:center;color:#B9914B;font-family:"Cormorant Garamond",serif;font-size:3rem;opacity:.75}
+.corner-tl{top:-22px;left:-22px}.corner-tr{top:-22px;right:-22px;transform:scaleX(-1)}
+.corner-bl{bottom:-22px;left:-22px;transform:scaleY(-1)}.corner-br{bottom:-22px;right:-22px;transform:scale(-1)}
+.opening-glow{position:absolute;width:380px;height:380px;border-radius:50%;filter:blur(20px);opacity:.45;pointer-events:none;z-index:-1}
+.opening-glow-one{top:-170px;right:-80px;background:rgba(185,145,75,.16)}
+.opening-glow-two{bottom:-190px;left:-100px;background:rgba(100,26,40,.10)}
+.opening-particles{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.opening-particles span{position:absolute;width:4px;height:4px;border-radius:50%;background:#B9914B;opacity:.28;box-shadow:0 0 12px rgba(185,145,75,.5);animation:openingFloat 5s ease-in-out infinite}
+.opening-particles span:nth-child(1){left:12%;top:24%;animation-delay:-1s}.opening-particles span:nth-child(2){left:21%;top:72%;animation-delay:-3s}
+.opening-particles span:nth-child(3){left:31%;top:15%;animation-delay:-2s}.opening-particles span:nth-child(4){left:43%;top:82%;animation-delay:-4s}
+.opening-particles span:nth-child(5){left:57%;top:12%;animation-delay:-1.5s}.opening-particles span:nth-child(6){left:69%;top:78%;animation-delay:-3.5s}
+.opening-particles span:nth-child(7){left:79%;top:28%;animation-delay:-2.5s}.opening-particles span:nth-child(8){left:89%;top:61%;animation-delay:-4.5s}
+.opening-particles span:nth-child(9){left:7%;top:55%;animation-delay:-.5s}.opening-particles span:nth-child(10){left:92%;top:16%;animation-delay:-2.8s}
+.opening-particles span:nth-child(11){left:35%;top:91%;animation-delay:-1.8s}.opening-particles span:nth-child(12){left:65%;top:91%;animation-delay:-3.8s}
+.opening-ornament{position:relative;z-index:3;display:flex;align-items:center;justify-content:center;gap:14px;color:#B9914B;opacity:.8}
+.opening-ornament span{display:block;width:70px;height:1px;background:linear-gradient(90deg,transparent,#B9914B)}
+.opening-ornament span:last-child{background:linear-gradient(90deg,#B9914B,transparent)}
+.opening-ornament i{font-family:"Cormorant Garamond",serif;font-size:1.15rem;font-style:normal}
+.ornament-top{margin-bottom:1.25rem}.ornament-bottom{margin-top:1.25rem;transform:scale(.82);opacity:.55}
+.opening-copy{position:relative;z-index:3;text-align:center;margin-bottom:1.45rem;animation:openingReveal .9s ease both}
+.opening-kicker{margin:0;color:#641A28;font-size:.56rem;font-weight:600;letter-spacing:.34em;text-transform:uppercase}
+.opening-copy h1{margin:.5rem 0 .35rem;color:#321D1C;font-family:"Cormorant Garamond",serif;font-size:clamp(3.5rem,7vw,6.2rem);font-weight:500;line-height:.84;letter-spacing:-.035em}
+.opening-copy h1 span{color:#B9914B;font-style:italic}
+.opening-rule{display:flex;align-items:center;justify-content:center;gap:9px;margin:.65rem 0 .55rem}
+.opening-rule span{width:45px;height:1px;background:#B9914B;opacity:.65}
+.opening-rule b{color:#B9914B;font-family:"Cormorant Garamond",serif;font-size:.8rem;font-weight:400}
+.opening-date{margin:0;color:#641A28;font-size:.58rem;font-weight:500;letter-spacing:.38em}
+.royal-envelope{position:relative;z-index:5;width:min(470px,82vw);height:min(285px,50vw);min-height:205px;border:0;padding:0;background:transparent;cursor:pointer;perspective:1400px;filter:drop-shadow(0 26px 24px rgba(67,38,22,.20));transition:transform .35s ease,filter .35s ease;animation:envelopeEntrance 1.05s .15s cubic-bezier(.2,.8,.2,1) both}
+.royal-envelope:hover{transform:translateY(-5px);filter:drop-shadow(0 32px 30px rgba(67,38,22,.25))}
+.envelope-shadow{position:absolute;left:5%;right:5%;bottom:-20px;height:35px;border-radius:50%;background:rgba(77,42,27,.18);filter:blur(13px)}
+.envelope-body{position:absolute;inset:0;border:1px solid rgba(105,65,25,.30);border-radius:4px;background:linear-gradient(135deg,#fff9ec 0%,#f2dfc0 52%,#e5c993 100%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.55),inset 0 0 40px rgba(145,101,43,.08)}
+.envelope-body::before{content:"";position:absolute;inset:12px;border:1px solid rgba(185,145,75,.45)}
+.royal-envelope-card{position:absolute;z-index:2;left:14%;top:16px;width:72%;height:calc(100% - 28px);display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;color:#641A28;background:#FFF9EF;border:1px solid rgba(185,145,75,.75);box-shadow:0 10px 22px rgba(61,32,20,.18);transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
+.card-frame{position:absolute;inset:9px;border:1px solid rgba(185,145,75,.48)}
+.royal-envelope-card small,.royal-envelope-card strong,.royal-envelope-card i,.royal-envelope-card em{position:relative;z-index:2}
+.royal-envelope-card small{margin-bottom:.35rem;font-size:.37rem;font-weight:600;letter-spacing:.18em}
+.royal-envelope-card strong{font-family:"Cormorant Garamond",serif;font-size:2.5rem;font-weight:500;line-height:.72}
+.royal-envelope-card i{margin:.25rem 0;color:#B9914B;font-family:"Cormorant Garamond",serif;font-size:1.1rem}
+.royal-envelope-card em{margin-top:.65rem;font-size:.4rem;font-style:normal;letter-spacing:.22em}
+.royal-envelope-flap{position:absolute;inset:0;z-index:6;clip-path:polygon(0 0,100% 0,50% 66%);transform-origin:top center;background:linear-gradient(150deg,#FFF8EA,#D8BD82);border-top:1px solid rgba(105,65,25,.35);transition:transform 1.05s cubic-bezier(.2,.8,.2,1);backface-visibility:hidden}
+.envelope-fold-left,.envelope-fold-right{position:absolute;z-index:7;bottom:0;width:50%;height:100%;pointer-events:none}
+.envelope-fold-left{left:0;clip-path:polygon(0 0,100% 100%,0 100%);background:linear-gradient(135deg,#f6e8cd,#D9BD82);opacity:.9}
+.envelope-fold-right{right:0;clip-path:polygon(100% 0,100% 100%,0 100%);background:linear-gradient(225deg,#f6e8cd,#D1B275);opacity:.9}
+.royal-envelope-front{position:absolute;inset:0;z-index:8;pointer-events:none;clip-path:polygon(0 100%,50% 48%,100% 100%);background:linear-gradient(160deg,#f0dcb8,#C7A35F);opacity:.9}
+.royal-seal{position:absolute;z-index:10;left:50%;top:58%;width:76px;height:76px;display:flex;align-items:center;justify-content:center;gap:2px;border-radius:50%;color:#f5dfad;background:radial-gradient(circle at 35% 28%,#8a3345,#641A28 55%,#430e19 100%);border:2px solid #D8BD82;box-shadow:0 7px 18px rgba(54,20,16,.28),inset 0 0 0 4px rgba(255,255,255,.05),inset 0 0 14px rgba(0,0,0,.3);transform:translate(-50%,-50%);transition:transform .5s ease,opacity .5s ease}
+.seal-ring{position:absolute;inset:7px;border:1px solid rgba(216,189,130,.7);border-radius:50%}
+.royal-seal b{position:relative;z-index:2;font-family:"Cormorant Garamond",serif;font-size:1.12rem;font-weight:600}
+.royal-seal small{position:relative;z-index:2;font-size:.5rem}
+.royal-envelope:hover .royal-seal{transform:translate(-50%,-50%) scale(1.08) rotate(-3deg)}
+.royal-open-button{position:relative;z-index:6;display:flex;align-items:center;justify-content:center;gap:.75rem;margin-top:1.55rem;min-width:205px;border:1px solid rgba(100,26,40,.48);border-radius:999px;padding:.78rem 1.45rem;color:#641A28;background:rgba(255,250,240,.56);box-shadow:0 8px 22px rgba(79,40,25,.08);backdrop-filter:blur(10px);cursor:pointer;font-size:.61rem;font-weight:500;letter-spacing:.19em;text-transform:uppercase;transition:all .3s ease}
+.royal-open-button:hover{color:#FFF9EF;background:#641A28;border-color:#641A28;transform:translateY(-2px)}
+.button-star{color:#B9914B;transition:transform .3s ease}
+.royal-open-button:hover .button-star:first-child{transform:translateX(-3px)}
+.royal-open-button:hover .button-star:last-child{transform:translateX(3px)}
+.royal-hint{position:relative;z-index:3;margin:.65rem 0 0;color:rgba(50,29,28,.52);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase}
+.royal-envelope.is-open .royal-envelope-flap{transform:rotateX(180deg)}
+.royal-envelope.is-open .royal-envelope-card{transform:translateY(-150px) scale(1.035)}
+.royal-envelope.is-open .royal-seal{opacity:0;transform:translate(-50%,-50%) scale(1.9) rotate(12deg)}
+.royal-envelope.is-open{animation:envelopeOpen .9s ease both}
+.royal-opening.is-closing{opacity:0;visibility:hidden;pointer-events:none}
+body.royal-locked{overflow:hidden}
+@keyframes openingReveal{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes envelopeEntrance{from{opacity:0;transform:translateY(35px) scale(.94)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes envelopeOpen{0%{transform:translateY(0)}35%{transform:translateY(-8px)}100%{transform:translateY(0)}}
+@keyframes openingFloat{0%,100%{transform:translateY(0) scale(.8);opacity:.16}50%{transform:translateY(-18px) scale(1.15);opacity:.48}}
+@media(max-width:600px){
+  .royal-opening::before{inset:10px}.royal-opening::after{inset:17px}.opening-border{inset:29px}
+  .border-corner{font-size:2.35rem}.corner-tl{top:-17px;left:-17px}.corner-tr{top:-17px;right:-17px}.corner-bl{bottom:-17px;left:-17px}.corner-br{bottom:-17px;right:-17px}
+  .opening-ornament span{width:38px}.opening-kicker{font-size:.43rem;letter-spacing:.25em}.opening-copy h1{font-size:clamp(2.75rem,13vw,4.1rem)}.opening-date{font-size:.47rem;letter-spacing:.27em}.opening-copy{margin-bottom:1rem}
+  .royal-envelope{width:88vw;height:48vw;min-height:180px}.royal-envelope-card strong{font-size:2rem}.royal-envelope-card small{font-size:.31rem}.royal-envelope-card em{font-size:.34rem}.royal-seal{width:65px;height:65px}
+  .royal-open-button{min-width:185px;margin-top:1.15rem;padding:.7rem 1rem;font-size:.53rem}.royal-hint{font-size:.48rem}
+}
+@media(max-width:390px){
+  .opening-border{inset:24px}.opening-ornament{transform:scale(.85)}.ornament-bottom{transform:scale(.7)}
+  .royal-envelope{min-height:165px}.royal-envelope-card strong{font-size:1.75rem}.royal-seal{width:58px;height:58px}
+}
+@media(prefers-reduced-motion:reduce){
+  .opening-particles span,.opening-copy,.royal-envelope{animation:none !important}
+}
+
+
+
+/* =========================================================
+   LUXURY BOTANICAL FLORALS — OPENING
+   ========================================================= */
+.opening-floral{
+  position:absolute;
+  top:50%;
+  width:260px;
+  height:690px;
+  transform:translateY(-50%);
+  z-index:4;
+  pointer-events:none;
+}
+.opening-floral-left{left:20px}
+.opening-floral-right{right:20px;transform:translateY(-50%) scaleX(-1)}
+
+.botanical-stem{
+  position:absolute;
+  width:3px;
+  height:600px;
+  bottom:20px;
+  left:116px;
+  border-radius:50%;
+  background:linear-gradient(to top,#8f672c,#c9a65e,#dfca91);
+  transform-origin:bottom;
+}
+.stem-a{transform:rotate(-7deg)}
+.stem-b{
+  height:490px;
+  left:142px;
+  transform:rotate(10deg);
+  opacity:.75;
+}
+
+.leaf{
+  position:absolute;
+  width:58px;
+  height:25px;
+  border:1.5px solid #B9914B;
+  border-radius:100% 0 100% 0;
+  background:linear-gradient(135deg,rgba(216,189,130,.65),rgba(255,249,239,.9));
+  box-shadow:inset 0 0 8px rgba(185,145,75,.12);
+  transform-origin:bottom right;
+}
+.leaf::after{
+  content:"";
+  position:absolute;
+  left:7px;right:7px;top:11px;
+  height:1px;
+  background:#B9914B;
+  transform:rotate(-18deg);
+}
+.leaf-1{left:50px;top:105px;transform:rotate(-28deg)}
+.leaf-2{left:130px;top:165px;transform:scaleX(-1) rotate(-28deg)}
+.leaf-3{left:35px;top:275px;transform:rotate(-25deg)}
+.leaf-4{left:128px;top:350px;transform:scaleX(-1) rotate(-25deg)}
+.leaf-5{left:46px;top:455px;transform:rotate(-30deg)}
+.leaf-6{left:126px;top:545px;transform:scaleX(-1) rotate(-30deg)}
+
+.flower{
+  position:absolute;
+  width:88px;
+  height:88px;
+}
+.flower::before,.flower::after,
+.flower i,.flower b,.flower em{
+  content:"";
+  position:absolute;
+  width:36px;
+  height:53px;
+  left:26px;
+  top:17px;
+  border:1.5px solid #B9914B;
+  border-radius:55% 55% 48% 48%;
+  background:linear-gradient(145deg,#FFF9EF,#e7d3a6);
+  transform-origin:50% 50%;
+}
+.flower::before{transform:rotate(0deg) translateY(-14px)}
+.flower::after{transform:rotate(72deg) translateY(-14px)}
+.flower i{transform:rotate(144deg) translateY(-14px)}
+.flower b{transform:rotate(216deg) translateY(-14px)}
+.flower em{transform:rotate(288deg) translateY(-14px)}
+.flower i,.flower b,.flower em{font-size:0}
+.flower > i::after{
+  content:"";
+  position:absolute;
+  inset:10px;
+  border-radius:50%;
+  background:#641A28;
+}
+.flower > b::after{
+  content:"";
+  position:absolute;
+  width:13px;height:13px;
+  left:10px;top:18px;
+  border-radius:50%;
+  background:#B9914B;
+}
+.flower-1{left:4px;top:28px;transform:scale(1.05)}
+.flower-2{left:139px;top:185px;transform:scale(.88)}
+.flower-3{left:8px;top:380px;transform:scale(.96)}
+.flower-4{left:143px;top:515px;transform:scale(.78)}
+
+.flower-1::before,.flower-1::after,.flower-1 i,.flower-1 b,.flower-1 em,
+.flower-3::before,.flower-3::after,.flower-3 i,.flower-3 b,.flower-3 em{
+  background:linear-gradient(145deg,#7e2636,#641A28);
+}
+.flower-1 > i::after,.flower-3 > i::after{background:#D8BD82}
+
+.bud{
+  position:absolute;
+  width:27px;height:44px;
+  border:1.5px solid #B9914B;
+  border-radius:70% 30% 70% 30%;
+  background:#641A28;
+}
+.bud-1{left:87px;top:90px;transform:rotate(-30deg)}
+.bud-2{left:159px;top:465px;transform:rotate(25deg)}
+
+.tiny-flower{
+  position:absolute;
+  width:30px;height:30px;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at center,#B9914B 0 14%,transparent 15%),
+    conic-gradient(from 0deg,#FFF9EF 0 16%,transparent 16% 20%,#FFF9EF 20% 36%,transparent 36% 40%,#FFF9EF 40% 56%,transparent 56% 60%,#FFF9EF 60% 76%,transparent 76% 80%,#FFF9EF 80% 96%,transparent 96%);
+  border:1px solid rgba(185,145,75,.7);
+}
+.tiny-1{left:35px;top:205px}
+.tiny-2{left:184px;top:310px}
+.tiny-3{left:42px;top:585px}
+
+@media(max-width:900px){
+  .opening-floral{width:185px;height:610px}
+  .opening-floral-left{left:-12px}
+  .opening-floral-right{right:-12px}
+}
+@media(max-width:600px){
+  .opening-floral{width:125px;height:520px;opacity:.72}
+  .opening-floral-left{left:-38px}
+  .opening-floral-right{right:-38px}
+  .leaf{width:45px;height:20px}
+  .flower{transform:scale(.75)!important}
+}
+@media(max-width:430px){
+  .opening-floral{width:105px;height:450px;opacity:.58}
+  .opening-floral-left{left:-43px}
+  .opening-floral-right{right:-43px}
+}
+
+
+/* =========================================================
+   FIXED SIDE BOTANICAL FRAME
+   The floral containers themselves are positioned at the sides.
+   ========================================================= */
+.floral-side{
+  position:absolute;
+  top:50%;
+  width:250px;
+  height:680px;
+  transform:translateY(-50%);
+  z-index:2;
+  pointer-events:none;
+}
+.floral-left{left:14px}
+.floral-right{right:14px;transform:translateY(-50%) scaleX(-1)}
+
+.floral-side .vine{
+  position:absolute;
+  display:block;
+  width:3px;
+  height:610px;
+  bottom:22px;
+  left:118px;
+  border-radius:50%;
+  background:linear-gradient(to top,#8e6527,#c6a158,#dfca91);
+  transform-origin:bottom;
+}
+.floral-side .vine-a{transform:rotate(-8deg)}
+.floral-side .vine-b{
+  height:500px;
+  left:145px;
+  transform:rotate(11deg);
+  opacity:.78;
+}
+
+.floral-side .leaf{
+  position:absolute;
+  width:58px;
+  height:25px;
+  border:1.5px solid #B9914B;
+  border-radius:100% 0 100% 0;
+  background:linear-gradient(135deg,rgba(216,189,130,.65),rgba(255,249,239,.92));
+  box-shadow:inset 0 0 8px rgba(185,145,75,.12);
+}
+.floral-side .leaf::after{
+  content:"";
+  position:absolute;
+  left:7px;right:7px;top:11px;
+  height:1px;
+  background:#B9914B;
+  transform:rotate(-18deg);
+}
+.floral-side .l1{left:50px;top:105px;transform:rotate(-28deg)}
+.floral-side .l2{left:130px;top:165px;transform:scaleX(-1) rotate(-28deg)}
+.floral-side .l3{left:35px;top:275px;transform:rotate(-25deg)}
+.floral-side .l4{left:128px;top:350px;transform:scaleX(-1) rotate(-25deg)}
+.floral-side .l5{left:46px;top:455px;transform:rotate(-30deg)}
+.floral-side .l6{left:126px;top:545px;transform:scaleX(-1) rotate(-30deg)}
+
+.floral-side .flower{
+  position:absolute;
+  width:88px;
+  height:88px;
+}
+.floral-side .flower::before,
+.floral-side .flower::after,
+.floral-side .flower i{
+  content:"";
+  position:absolute;
+  width:36px;
+  height:53px;
+  left:26px;
+  top:17px;
+  border:1.5px solid #B9914B;
+  border-radius:55% 55% 48% 48%;
+  background:linear-gradient(145deg,#FFF9EF,#e7d3a6);
+  transform-origin:50% 50%;
+}
+.floral-side .flower::before{transform:rotate(0deg) translateY(-14px)}
+.floral-side .flower::after{transform:rotate(72deg) translateY(-14px)}
+.floral-side .flower i{transform:rotate(144deg) translateY(-14px)}
+.floral-side .flower i::before{
+  content:"";
+  position:absolute;
+  width:36px;
+  height:53px;
+  left:0;
+  top:0;
+  border:1.5px solid #B9914B;
+  border-radius:55% 55% 48% 48%;
+  background:linear-gradient(145deg,#FFF9EF,#e7d3a6);
+  transform:rotate(72deg);
+}
+.floral-side .flower i::after{
+  content:"";
+  position:absolute;
+  width:36px;
+  height:53px;
+  left:0;
+  top:0;
+  border:1.5px solid #B9914B;
+  border-radius:55% 55% 48% 48%;
+  background:#641A28;
+  transform:rotate(144deg);
+}
+.floral-side .flower b{
+  display:none;
+}
+.floral-side .flower{
+  background:radial-gradient(circle at center,#B9914B 0 8px,transparent 9px);
+}
+.floral-side .f1{left:4px;top:28px;transform:scale(1.05)}
+.floral-side .f2{left:139px;top:185px;transform:scale(.88)}
+.floral-side .f1 i::after,
+.floral-side .f2 i::after{
+  background:#641A28;
+}
+.floral-side .f1::before,
+.floral-side .f1::after,
+.floral-side .f2::before,
+.floral-side .f2::after{
+  background:linear-gradient(145deg,#FFF9EF,#e7d3a6);
+}
+
+.floral-side .bud{
+  position:absolute;
+  width:27px;height:44px;
+  border:1.5px solid #B9914B;
+  border-radius:70% 30% 70% 30%;
+  background:#641A28;
+}
+.floral-side .b1{left:87px;top:90px;transform:rotate(-30deg)}
+.floral-side .b2{left:159px;top:465px;transform:rotate(25deg)}
+
+@media(max-width:900px){
+  .floral-side{width:190px;height:600px}
+  .floral-left{left:-20px}
+  .floral-right{right:-20px}
+}
+@media(max-width:600px){
+  .floral-side{width:135px;height:510px;opacity:.72}
+  .floral-left{left:-40px}
+  .floral-right{right:-40px}
+  .floral-side .leaf{width:45px;height:20px}
+  .floral-side .flower{transform:scale(.72)!important}
+}
+@media(max-width:430px){
+  .floral-side{width:108px;height:440px;opacity:.55}
+  .floral-left{left:-48px}
+  .floral-right{right:-48px}
+}
+
+
+/* =========================================================
+   FINAL PREMIUM FLORAL OPENING
+   Uses the high-detail floral stationery artwork as the
+   visual reference/design. No CSS flower construction.
+   ========================================================= */
+body.royal-locked{overflow:hidden}
+
+.image-opening{
+  position:fixed;
+  inset:0;
+  z-index:2000;
+  display:block;
+  overflow:hidden;
+  background:#F7F0E4;
+  opacity:1;
+  visibility:visible;
+  transition:opacity 1s ease,visibility 1s ease;
+}
+
+.opening-artwork{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+.opening-artwork img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  filter:none !important;
+  transform:scale(1.001);
+  transition:transform 1.8s cubic-bezier(.2,.75,.2,1),opacity 1.2s ease;
+}
+
+.image-open-hotspot{
+  position:absolute;
+  left:50%;
+  top:84%;
+  width:245px;
+  height:64px;
+  transform:translate(-50%,-50%);
+  border:1px solid rgba(100,26,40,.6);
+  border-radius:999px;
+  background:rgba(100,26,40,.96);
+  color:#FFF9EF;
+  box-shadow:0 12px 30px rgba(54,20,16,.22),0 0 0 5px rgba(255,249,239,.35);
+  font-family:inherit;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.25em;
+  text-transform:uppercase;
+  cursor:pointer;
+  opacity:.01;
+  transition:opacity .3s ease,transform .3s ease;
+}
+
+.image-open-hotspot:hover{
+  opacity:.08;
+  transform:translate(-50%,-50%) scale(1.03);
+}
+
+.image-opening.is-closing{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+
+.image-opening.is-closing .opening-artwork img{
+  transform:scale(1.045);
+  opacity:0;
+}
+
+@media(max-width:900px){
+  .opening-artwork img{
+    object-fit:cover;
+    object-position:center;
+  }
+  .image-open-hotspot{
+    top:84%;
+    width:210px;
+    height:58px;
+  }
+}
+
+@media(max-width:600px){
+  .opening-artwork img{
+    object-fit:cover;
+    object-position:center;
+  }
+  .image-open-hotspot{
+    top:83%;
+    width:185px;
+    height:54px;
+  }
+}
+
+@media(max-width:430px){
+  .image-open-hotspot{
+    top:82%;
+    width:175px;
+    height:50px;
+  }
+}
+
+/* =========================================================
+   REAL INTERACTIVE ENVELOPE — FINAL OPENING
+   ========================================================= */
+.real-envelope-opening{position:fixed;inset:0;z-index:2000;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#F7F0E4;transition:opacity 1.15s ease,visibility 1.15s ease}
+.opening-backdrop{position:absolute;inset:0;z-index:0}
+.opening-backdrop img{width:100%;height:100%;display:block;object-fit:cover;object-position:center;filter:none!important}
+.opening-backdrop-wash{position:absolute;inset:0;background:rgba(247,240,228,.18)}
+.interactive-envelope-wrap{position:relative;z-index:10;width:min(520px,42vw);display:flex;flex-direction:column;align-items:center;transform:translateY(7vh)}
+.real-envelope-opening .royal-envelope{position:relative;width:min(500px,42vw);height:280px;min-height:0;border:0;padding:0;background:transparent;cursor:pointer;perspective:1400px;filter:drop-shadow(0 25px 24px rgba(63,35,22,.24));animation:realEnvelopeFloat 4.5s ease-in-out infinite}
+.real-envelope-opening .envelope-shadow{position:absolute;left:5%;right:5%;bottom:-20px;height:34px;border-radius:50%;background:rgba(60,30,20,.22);filter:blur(12px)}
+.real-envelope-opening .envelope-body{position:absolute;inset:0;border:1px solid rgba(119,78,29,.35);border-radius:3px;background:linear-gradient(135deg,#fff9ed,#f0dfbf 54%,#dfc48c);box-shadow:inset 0 0 0 1px rgba(255,255,255,.6),inset 0 0 45px rgba(133,88,31,.09)}
+.real-envelope-opening .envelope-body:before{content:"";position:absolute;inset:12px;border:1px solid rgba(185,145,75,.48)}
+.real-envelope-opening .royal-envelope-card{position:absolute;z-index:2;left:13%;top:14px;width:74%;height:calc(100% - 28px);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#641A28;background:#FFF9EF;border:1px solid rgba(185,145,75,.78);box-shadow:0 10px 25px rgba(61,32,20,.18);transition:transform 1.25s cubic-bezier(.18,.8,.2,1)}
+.real-envelope-opening .card-frame{position:absolute;inset:9px;border:1px solid rgba(185,145,75,.48)}
+.real-envelope-opening .royal-envelope-card small{position:relative;margin-bottom:8px;font-size:7px;letter-spacing:.2em;font-weight:600}
+.real-envelope-opening .royal-envelope-card strong{position:relative;font-family:"Cormorant Garamond",serif;font-size:40px;font-weight:500;line-height:.68}
+.real-envelope-opening .royal-envelope-card i{position:relative;margin:8px 0;color:#B9914B;font-family:"Cormorant Garamond",serif;font-size:18px;font-style:normal}
+.real-envelope-opening .royal-envelope-card em{position:relative;margin-top:12px;font-size:7px;letter-spacing:.23em;font-style:normal}
+.real-envelope-opening .royal-envelope-flap{position:absolute;inset:0;z-index:6;clip-path:polygon(0 0,100% 0,50% 67%);transform-origin:top center;background:linear-gradient(150deg,#FFF8EA,#D8BD82);border-top:1px solid rgba(105,65,25,.35);transition:transform 1.05s cubic-bezier(.2,.8,.2,1);backface-visibility:hidden}
+.real-envelope-opening .envelope-fold-left,.real-envelope-opening .envelope-fold-right{position:absolute;z-index:7;bottom:0;width:50%;height:100%;pointer-events:none}
+.real-envelope-opening .envelope-fold-left{left:0;clip-path:polygon(0 0,100% 100%,0 100%);background:linear-gradient(135deg,#f6e8cd,#D9BD82)}
+.real-envelope-opening .envelope-fold-right{right:0;clip-path:polygon(100% 0,100% 100%,0 100%);background:linear-gradient(225deg,#f6e8cd,#D1B275)}
+.real-envelope-opening .royal-envelope-front{position:absolute;inset:0;z-index:8;pointer-events:none;clip-path:polygon(0 100%,50% 48%,100% 100%);background:linear-gradient(160deg,#f0dcb8,#C7A35F);opacity:.94}
+.real-envelope-opening .royal-seal{position:absolute;z-index:10;left:50%;top:58%;width:78px;height:78px;display:flex;align-items:center;justify-content:center;gap:2px;border-radius:50%;color:#f5dfad;background:radial-gradient(circle at 35% 28%,#8a3345,#641A28 55%,#430e19);border:2px solid #D8BD82;box-shadow:0 7px 18px rgba(54,20,16,.28),inset 0 0 0 4px rgba(255,255,255,.05);transform:translate(-50%,-50%);transition:transform .55s ease,opacity .55s ease}
+.real-envelope-opening .seal-ring{position:absolute;inset:7px;border:1px solid rgba(216,189,130,.7);border-radius:50%}
+.real-envelope-opening .royal-seal b{position:relative;font-family:"Cormorant Garamond",serif;font-size:18px}
+.real-envelope-opening .royal-seal small{font-size:8px}
+.real-envelope-opening .royal-open-button{position:relative;z-index:20;display:flex;align-items:center;justify-content:center;gap:12px;margin-top:34px;min-width:210px;border:1px solid rgba(100,26,40,.55);border-radius:999px;padding:13px 24px;color:#FFF9EF;background:#641A28;box-shadow:0 9px 22px rgba(79,40,25,.18);cursor:pointer;font-size:9px;font-weight:600;letter-spacing:.22em;text-transform:uppercase}
+.real-envelope-opening .button-star{color:#D8BD82}
+.real-envelope-opening .royal-envelope.is-open .royal-envelope-flap{transform:rotateX(180deg)}
+.real-envelope-opening .royal-envelope.is-open .royal-envelope-card{transform:translateY(-175px) scale(1.045)}
+.real-envelope-opening .royal-envelope.is-open .royal-seal{opacity:0;transform:translate(-50%,-50%) scale(1.75) rotate(12deg)}
+.real-envelope-opening .royal-envelope.is-open{animation:realEnvelopeLift .9s ease forwards}
+.real-envelope-opening.is-closing{opacity:0;visibility:hidden;pointer-events:none}
+@keyframes realEnvelopeFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes realEnvelopeLift{0%{transform:translateY(0)}40%{transform:translateY(-10px)}100%{transform:translateY(0)}}
+@media(max-width:700px){.interactive-envelope-wrap{width:88vw;transform:translateY(5vh)}.real-envelope-opening .royal-envelope{width:88vw;height:50vw;min-height:185px}.real-envelope-opening .royal-envelope-card strong{font-size:30px}.real-envelope-opening .royal-seal{width:64px;height:64px}.real-envelope-opening .royal-open-button{margin-top:24px;min-width:185px}}
+
+/* Final clean-background adjustment */
+.real-envelope-opening .opening-backdrop-wash{
+  background:rgba(247,240,228,.06);
+}
+.real-envelope-opening .interactive-envelope-wrap{
+  transform:translateY(8vh);
+}
+.real-envelope-opening .royal-envelope{
+  width:min(520px,44vw);
+  height:292px;
+}
+@media(max-width:700px){
+  .real-envelope-opening .interactive-envelope-wrap{transform:translateY(6vh)}
+  .real-envelope-opening .royal-envelope{width:88vw;height:50vw;min-height:185px}
+}
+
+
+/* =========================================================
+   OUR MOMENTS — EDITORIAL PHOTO FRAMES
+   Natural image proportions are preserved; no forced crops.
+   ========================================================= */
+.moments{
+  position:relative;
+  padding-top:clamp(90px,10vw,150px);
+  padding-bottom:clamp(100px,12vw,170px);
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 20%, rgba(216,189,130,.13), transparent 32%),
+    #F7F0E4;
+}
+
+.moments::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:50%;
+  width:min(900px,90vw);
+  height:1px;
+  transform:translateX(-50%);
+  background:linear-gradient(90deg,transparent,rgba(185,145,75,.55),transparent);
+}
+
+.moments-heading{
+  position:relative;
+  z-index:2;
+  text-align:center;
+  margin-bottom:58px;
+}
+
+.moments-heading h2{
+  margin:10px 0 16px;
+  color:#321D1C;
+}
+
+.moments-heading h2 em{
+  color:#641A28;
+}
+
+.moments-ornament{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:13px;
+  color:#B9914B;
+}
+
+.moments-ornament span{
+  width:70px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,#B9914B);
+}
+
+.moments-ornament span:last-child{
+  background:linear-gradient(90deg,#B9914B,transparent);
+}
+
+.moments-ornament b{
+  font-size:11px;
+  font-weight:400;
+}
+
+.moments-gallery{
+  position:relative;
+  width:min(1180px,92vw);
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:34px;
+  align-items:start;
+}
+
+.moment-frame{
+  position:relative;
+  margin:0;
+  padding:15px 15px 48px;
+  background:
+    linear-gradient(135deg,rgba(255,249,239,.98),rgba(239,227,208,.98));
+  border:1px solid rgba(185,145,75,.72);
+  box-shadow:
+    0 22px 46px rgba(50,29,28,.12),
+    0 5px 14px rgba(50,29,28,.07);
+  transition:transform .55s cubic-bezier(.2,.75,.2,1),box-shadow .55s ease;
+}
+
+/* Elegant double-line gallery frame */
+.moment-frame::before{
+  content:"";
+  position:absolute;
+  inset:7px;
+  border:1px solid rgba(185,145,75,.38);
+  pointer-events:none;
+}
+
+/* Small ornamental corner details rather than a heavy decorative frame */
+.moment-frame::after{
+  content:"✦";
+  position:absolute;
+  left:50%;
+  bottom:15px;
+  transform:translateX(-50%);
+  color:var(--wedding-gold);
+  font-size:11px;
+  letter-spacing:.18em;
+}
+
+.moment-mat{
+  position:relative;
+  z-index:1;
+  padding:10px;
+  background:var(--wedding-card);
+  border:1px solid rgba(100,26,40,.13);
+  box-shadow:
+    inset 0 0 0 1px rgba(216,189,130,.18),
+    inset 0 0 24px rgba(77,40,25,.045);
+}
+
+.moment-mat::before,
+.moment-mat::after{
+  content:"";
+  position:absolute;
+  width:18px;
+  height:18px;
+  pointer-events:none;
+  opacity:.65;
+}
+.moment-mat::before{
+  top:5px;left:5px;
+  border-top:1px solid var(--wedding-gold);
+  border-left:1px solid var(--wedding-gold);
+}
+.moment-mat::after{
+  right:5px;bottom:5px;
+  border-right:1px solid var(--wedding-gold);
+  border-bottom:1px solid var(--wedding-gold);
+}
+
+.moment-mat img{
+  display:block;
+  width:100%;
+  height:auto;
+  max-width:100%;
+  object-fit:contain;
+  border:0;
+  filter:none !important;
+}
+
+.moment-frame figcaption{
+  position:absolute;
+  z-index:2;
+  left:0;
+  right:0;
+  bottom:13px;
+  text-align:center;
+  color:var(--wedding-burgundy);
+  font-family:"Cormorant Garamond",serif;
+  font-size:13px;
+  font-style:italic;
+  letter-spacing:.04em;
+}
+
+.moment-frame:hover{
+  transform:translateY(-8px) rotate(-.35deg);
+  box-shadow:
+    0 30px 58px rgba(50,29,28,.17),
+    0 7px 16px rgba(50,29,28,.08);
+}
+.moment-frame:nth-child(even):hover{
+  transform:translateY(-8px) rotate(.35deg);
+}
+
+.moment-tall{
+  grid-column:1 / span 4;
+  margin-top:28px;
+}
+.moment-wide{
+  grid-column:5 / span 8;
+  margin-top:0;
+}
+.moment-portrait{
+  grid-column:2 / span 5;
+  margin-top:8px;
+}
+.moment-portrait:nth-child(4){
+  grid-column:7 / span 5;
+  margin-top:62px;
+}
+.moment-small{
+  grid-column:4 / span 6;
+  margin-top:22px;
+}
+
+@media(max-width:850px){
+  .moments-gallery{
+    grid-template-columns:repeat(2,1fr);
+    gap:22px;
+  }
+  .moment-tall,
+  .moment-wide,
+  .moment-portrait,
+  .moment-portrait:nth-child(4),
+  .moment-small{
+    grid-column:auto;
+    margin-top:0;
+  }
+  .moment-wide{
+    grid-column:1 / -1;
+  }
+}
+
+@media(max-width:560px){
+  .moments{
+    padding-top:80px;
+    padding-bottom:95px;
+  }
+  .moments-heading{
+    margin-bottom:38px;
+  }
+  .moments-gallery{
+    width:88vw;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:28px;
+  }
+  .moment-frame{
+    width:min(100%,380px);
+    padding:10px 10px 38px;
+  }
+  .moment-frame:hover,
+  .moment-frame:nth-child(even):hover{
+    transform:translateY(-4px);
+  }
+}
+
+
+/* =========================================================
+   FINAL WEDDING PALETTE
+   Warm Ivory • Champagne Gold • Deep Burgundy
+   ========================================================= */
+:root{
+  --wedding-ivory:#F7F0E4;
+  --wedding-cream:#EFE3D0;
+  --wedding-card:#FFF9EF;
+  --wedding-burgundy:#641A28;
+  --wedding-burgundy-deep:#4A111D;
+  --wedding-gold:#B9914B;
+  --wedding-gold-soft:#D8BD82;
+  --wedding-ink:#321D1C;
+}
+
+/* Main page atmosphere */
+html,
+body{
+  background:
+    radial-gradient(circle at 18% 15%, rgba(216,189,130,.12), transparent 28%),
+    radial-gradient(circle at 82% 18%, rgba(100,26,40,.045), transparent 27%),
+    radial-gradient(circle at 50% 100%, rgba(185,145,75,.10), transparent 36%),
+    var(--wedding-ivory);
+  color:var(--wedding-ink);
+}
+
+/* Major sections stay within one continuous creamy palette. */
+section,
+main{
+  color:var(--wedding-ink);
+}
+
+.hero,
+.story,
+.personal-invite,
+.moments{
+  background:
+    radial-gradient(circle at 50% 0%, rgba(216,189,130,.10), transparent 38%),
+    linear-gradient(180deg, var(--wedding-ivory), var(--wedding-cream));
+}
+
+/* Cards and content panels */
+.card,
+.countdown-card,
+.personal-invite,
+.moment-frame,
+.moment-mat{
+  background-color:var(--wedding-card);
+}
+
+/* Burgundy is reserved for important text and accents. */
+.eyebrow,
+.section-label,
+.moments-heading h2 em,
+.moment-frame figcaption{
+  color:var(--wedding-burgundy);
+}
+
+/* Champagne gold replaces harsh yellow/generic gold. */
+.moments-ornament,
+.invite-line,
+.decorative-line{
+  color:var(--wedding-gold);
+}
+
+/* Soft, warm section separators */
+.moments::before{
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(185,145,75,.60),
+    transparent
+  );
+}
+
+/* Keep all photos crisp — never blur them. */
+.moment-mat img,
+.moment-frame img{
+  filter:none !important;
+  image-rendering:auto;
+}
+
+/* Mobile retains the same palette without becoming darker. */
+@media(max-width:700px){
+  html,
+  body{
+    background:var(--wedding-ivory);
+  }
+}
+
+
+/* =========================================================
+   FINAL SUBTLY DARKER ORIGINAL PALETTE
+   ========================================================= */
+:root{
+  --wedding-ivory:#EDE4D5;
+  --wedding-cream:#E5D8C4;
+  --wedding-card:#F7EFE3;
+  --wedding-burgundy:#5A1725;
+  --wedding-burgundy-deep:#43101B;
+  --wedding-gold:#AD8743;
+  --wedding-gold-soft:#CDB071;
+  --wedding-ink:#2B1919;
+}
+
+html,
+body{
+  background:
+    radial-gradient(circle at 18% 12%, rgba(185,145,75,.10), transparent 28%),
+    radial-gradient(circle at 82% 18%, rgba(90,23,37,.045), transparent 28%),
+    linear-gradient(180deg,#EDE4D5,#E5D8C4);
+  color:var(--wedding-ink);
+}
+
+body{
+  background-color:#EDE4D5;
+}
+
+section,
+main,
+.hero,
+.story,
+.personal-invite,
+.moments{
+  background:
+    radial-gradient(circle at 50% 0%, rgba(185,145,75,.08), transparent 38%),
+    linear-gradient(180deg,#EDE4D5,#E5D8C4);
+  color:var(--wedding-ink);
+}
+
+.card,
+.countdown-card,
+.personal-invite,
+.moment-frame{
+  background:#F7EFE3;
+}
+
+.moment-mat{
+  background:#F3E9D9;
+}
+
+.eyebrow,
+.section-label,
+.moments-heading h2 em,
+.moment-frame figcaption{
+  color:#5A1725;
+}
+
+.moments-ornament{
+  color:#AD8743;
+}
+
+.moments-ornament span,
+.moments::before{
+  background:linear-gradient(90deg,transparent,rgba(173,135,67,.62),transparent);
+}
+
+.moments-ornament span:last-child{
+  background:linear-gradient(90deg,rgba(173,135,67,.62),transparent);
+}
+
+.moment-frame{
+  border-color:rgba(173,135,67,.70);
+  box-shadow:
+    0 18px 42px rgba(58,32,24,.16),
+    0 2px 8px rgba(58,32,24,.09),
+    inset 0 0 0 5px rgba(255,249,239,.60);
+}
+
+.real-envelope-opening{
+  background:#EDE4D5;
+}
+
+.real-envelope-opening .opening-backdrop-wash{
+  background:rgba(237,228,213,.10);
+}
+
+
+/* =========================================================
+   SCREENSHOT-INSPIRED FINAL PALETTE
+   Deep charcoal • Champagne ivory • Soft antique gold
+   ========================================================= */
+:root{
+  --wedding-ivory:#F4EEE5;
+  --wedding-cream:#1B1917;
+  --wedding-card:#201E1B;
+  --wedding-burgundy:#6A2634;
+  --wedding-burgundy-deep:#45151F;
+  --wedding-gold:#D6BC78;
+  --wedding-gold-soft:#E1CC92;
+  --wedding-ink:#F4EEE5;
+  --charcoal:#141312;
+  --ivory:#F4EEE5;
+  --gold:#D6BC78;
+  --gold-soft:#E1CC92;
+  --muted:#AFA59A;
+  --white:#F8F3EC;
+}
+
+html,body{
+  background:#141312 !important;
+  color:#F4EEE5 !important;
+}
+
+body{
+  background:
+    radial-gradient(circle at 50% 0%,rgba(214,188,120,.055),transparent 34%),
+    linear-gradient(180deg,#141312 0%,#11100F 100%) !important;
+}
+
+section,main,
+.intro,.quote,.story,.countdown,.bilingual,.wedding,
+.personal-invite,.final-copy,.moments{
+  background:
+    radial-gradient(circle at 50% 0%,rgba(214,188,120,.045),transparent 30%),
+    #141312 !important;
+  color:#F4EEE5 !important;
+}
+
+h1,h2,blockquote,
+.hero h1,.quote blockquote,.poetic,
+.date-large .day,.date-large .year,
+.visual-caption,.final-copy h2{
+  color:#F4EEE5;
+}
+
+h2 em,
+.hero h1 span,.final-copy h2 span,
+.eyebrow,.section-label,
+.invite-date,.detail-label,.language-card .script,
+.story-copy strong,.poetic strong{
+  color:#E1CC92 !important;
+}
+
+.lead,
+.story-copy p:not(.eyebrow):not(.poetic),
+.language-card p{
+  color:#B8AEA2 !important;
+}
+
+.personal-invite{
+  background:
+    radial-gradient(circle at 50% 18%,rgba(106,38,52,.14),transparent 48%),
+    #141312 !important;
+}
+
+.personal-invite h2 #guestGreeting,
+.personal-invite h2 em{
+  color:#F4EEE5 !important;
+}
+
+.invite-line,.gold-line{
+  background:linear-gradient(90deg,transparent,#D6BC78,transparent) !important;
+}
+
+.language-card{
+  background:linear-gradient(135deg,#1A1816,#151413) !important;
+  border-color:rgba(214,188,120,.20) !important;
+}
+
+.wedding-card{
+  background:linear-gradient(135deg,rgba(106,38,52,.14),rgba(255,255,255,.015)) !important;
+  border-color:rgba(214,188,120,.24) !important;
+}
+
+.timer > div{
+  border-top-color:rgba(214,188,120,.30) !important;
+  border-bottom-color:rgba(214,188,120,.12) !important;
+}
+
+.timer span,.detail-value,#guestGreeting{
+  color:#F4EEE5 !important;
+}
+
+.timer small,.quote cite{
+  color:#9F968C !important;
+}
+
+.story .image-frame{
+  border-color:rgba(214,188,120,.28) !important;
+  background:rgba(214,188,120,.035) !important;
+}
+
+/* Photo gallery: dark luxury editorial frames */
+.moments{
+  padding-top:clamp(90px,10vw,150px) !important;
+  padding-bottom:clamp(100px,12vw,170px) !important;
+}
+
+.moments-heading h2{
+  color:#F4EEE5 !important;
+}
+
+.moments-heading h2 em{
+  color:#E1CC92 !important;
+}
+
+.moments-ornament{color:#D6BC78 !important;}
+.moments-ornament span{
+  background:linear-gradient(90deg,transparent,rgba(214,188,120,.72)) !important;
+}
+.moments-ornament span:last-child{
+  background:linear-gradient(90deg,rgba(214,188,120,.72),transparent) !important;
+}
+
+.moments::before{
+  background:linear-gradient(90deg,transparent,rgba(214,188,120,.60),transparent) !important;
+}
+
+.moment-frame{
+  position:relative;
+  padding:16px 16px 50px !important;
+  background:
+    linear-gradient(145deg,#25221F,#181715 72%) !important;
+  border:1px solid rgba(214,188,120,.72) !important;
+  box-shadow:
+    0 26px 55px rgba(0,0,0,.34),
+    0 6px 16px rgba(0,0,0,.25),
+    inset 0 0 0 1px rgba(255,255,255,.035) !important;
+}
+
+.moment-frame::before{
+  inset:7px !important;
+  border:1px solid rgba(214,188,120,.28) !important;
+}
+
+.moment-frame::after{
+  content:"✦" !important;
+  color:#D6BC78 !important;
+  bottom:15px !important;
+}
+
+.moment-mat{
+  padding:11px !important;
+  background:#0F0E0D !important;
+  border:1px solid rgba(214,188,120,.24) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(214,188,120,.08),
+    inset 0 0 30px rgba(0,0,0,.28) !important;
+}
+
+.moment-mat::before{
+  border-top-color:rgba(214,188,120,.82) !important;
+  border-left-color:rgba(214,188,120,.82) !important;
+}
+.moment-mat::after{
+  border-right-color:rgba(214,188,120,.82) !important;
+  border-bottom-color:rgba(214,188,120,.82) !important;
+}
+
+.moment-frame figcaption{
+  color:#E1CC92 !important;
+  font-size:14px !important;
+}
+
+.moment-frame:hover{
+  box-shadow:
+    0 32px 65px rgba(0,0,0,.42),
+    0 8px 18px rgba(0,0,0,.28),
+    inset 0 0 0 1px rgba(214,188,120,.06) !important;
+}
+
+footer{
+  background:#0D0C0B !important;
+  color:#827A72 !important;
+}
+footer .tiny{color:#5F5953 !important;}
+
+/* Keep the invitation opening itself warm and luminous; it remains the visual reveal. */
+.real-envelope-opening{background:#141312 !important;}
+.real-envelope-opening .opening-backdrop-wash{background:rgba(20,19,18,.12) !important;}
+
+/* =========================================================
+   MOBILE OPENING TITLE — prevents the baked landscape title
+   from being cropped on narrow screens.
+   ========================================================= */
+.mobile-opening-title{display:none}
+
+@media(max-width:700px){
+  .real-envelope-opening .opening-backdrop-wash{
+    background:linear-gradient(180deg,
+      rgba(247,240,228,.98) 0%,
+      rgba(247,240,228,.98) 27%,
+      rgba(247,240,228,.70) 36%,
+      rgba(247,240,228,.16) 49%,
+      rgba(247,240,228,.04) 62%,
+      rgba(247,240,228,.08) 100%
+    );
+  }
+
+  .mobile-opening-title{
+    position:absolute;
+    z-index:8;
+    top:5.5vh;
+    left:5vw;
+    width:90vw;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    color:#641A28;
+    pointer-events:none;
+  }
+
+  .mobile-opening-ornament{
+    margin-bottom:.25rem;
+    color:#B9914B;
+    font-size:.9rem;
+    line-height:1;
+  }
+
+  .mobile-opening-title h1{
+    margin:0;
+    max-width:100%;
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(2.65rem,10.7vw,4rem);
+    font-weight:500;
+    line-height:.9;
+    letter-spacing:-.025em;
+    white-space:nowrap;
+  }
+
+  .mobile-opening-title h1 em{
+    color:#B9914B;
+    font-style:normal;
+    font-weight:400;
+  }
+
+  .mobile-opening-rule{
+    width:58%;
+    max-width:250px;
+    margin:.5rem 0 .35rem;
+    display:flex;
+    align-items:center;
+    gap:.45rem;
+    color:#B9914B;
+  }
+
+  .mobile-opening-rule span{
+    flex:1;
+    height:1px;
+    background:rgba(185,145,75,.58);
+  }
+
+  .mobile-opening-rule b{
+    font-size:.62rem;
+    font-weight:400;
+  }
+
+  .mobile-opening-title p{
+    margin:0;
+    color:#641A28;
+    font-size:clamp(.53rem,2.2vw,.7rem);
+    letter-spacing:.27em;
+    font-weight:500;
+    white-space:nowrap;
+  }
+}
+
+@media(max-width:380px){
+  .mobile-opening-title{top:5vh}
+  .mobile-opening-title h1{font-size:10.1vw}
+  .mobile-opening-rule{margin-top:.42rem}
+}
+
+
+/* MOBILE OPENING — clean floral artwork with a dedicated responsive title */
+.opening-mobile-art{display:none}
+@media(max-width:700px){
+  .real-envelope-opening .opening-backdrop{background:#f7efe3;overflow:hidden}
+  .real-envelope-opening .opening-desktop-art{display:none !important}
+  .real-envelope-opening .opening-mobile-art{
+    display:block !important;
+    width:100%;height:100%;object-fit:cover;object-position:center center;
+  }
+  .real-envelope-opening .opening-backdrop-wash{background:rgba(247,239,227,.10) !important}
+  .mobile-opening-title{
+    top:6.2vh;left:4vw;width:92vw;
+    color:#5A1725;
+  }
+  .mobile-opening-title h1{
+    font-size:clamp(2.15rem,10.5vw,3.15rem);
+    line-height:.95;letter-spacing:-.02em;
+    white-space:nowrap;
+    text-shadow:0 1px 0 rgba(255,249,239,.55);
+  }
+  .mobile-opening-title h1 em{color:#AD8743}
+  .mobile-opening-title p{color:#5A1725;letter-spacing:.20em;font-size:clamp(.48rem,2vw,.64rem)}
+}
+@media(max-width:380px){
+  .mobile-opening-title{top:5.7vh}
+  .mobile-opening-title h1{font-size:10vw}
+}
+
+/* FINAL MOBILE OPENING TITLE POSITION/FIX */
+@media (max-width:700px){
+  /* Cover the baked-in landscape title near the top of the artwork. */
+  .real-envelope-opening .opening-backdrop-wash{
+    background:linear-gradient(180deg,
+      rgba(247,239,227,.99) 0%,
+      rgba(247,239,227,.99) 20%,
+      rgba(247,239,227,.94) 27%,
+      rgba(247,239,227,.42) 38%,
+      rgba(247,239,227,.08) 50%,
+      rgba(247,239,227,.05) 100%
+    ) !important;
+  }
+
+  /* Place the names clearly in the space immediately above the envelope. */
+  .mobile-opening-title{
+    top:22.5vh !important;
+    left:4vw !important;
+    width:92vw !important;
+    color:#5A1725 !important;
+  }
+
+  .mobile-opening-title h1{
+    color:#5A1725 !important;
+    font-size:clamp(2.15rem,10.5vw,3.15rem) !important;
+    line-height:.95 !important;
+    letter-spacing:-.02em !important;
+    text-shadow:0 1px 0 rgba(255,249,239,.8), 0 2px 10px rgba(90,23,37,.08) !important;
+  }
+
+  .mobile-opening-title h1 em{
+    color:#AD8743 !important;
+  }
+
+  .mobile-opening-title .mobile-opening-ornament{
+    color:#AD8743 !important;
+  }
+
+  .mobile-opening-title .mobile-opening-rule span{
+    background:rgba(173,135,67,.72) !important;
+  }
+
+  .mobile-opening-title .mobile-opening-rule b{
+    color:#AD8743 !important;
+  }
+
+  .mobile-opening-title p{
+    color:#5A1725 !important;
+    font-weight:600 !important;
+    letter-spacing:.20em !important;
+    text-shadow:0 1px 0 rgba(255,249,239,.8) !important;
+  }
+}
+
+@media (max-width:380px){
+  .mobile-opening-title{top:22vh !important;}
+  .mobile-opening-title h1{font-size:10vw !important;}
+}
+
+
+/* =========================================================
+   FINAL REFINEMENT — INTELLECTUAL MOMENT QUOTES + SEAMLESS END
+   ========================================================= */
+.moment-frame figcaption{
+  left:16px !important;
+  right:16px !important;
+  bottom:13px !important;
+  width:auto !important;
+  text-align:left !important;
+  color:#E1CC92 !important;
+  font-family:"Cormorant Garamond", Georgia, serif !important;
+  font-size:clamp(13px,1.15vw,16px) !important;
+  line-height:1.25 !important;
+  font-style:italic !important;
+  letter-spacing:.015em !important;
+  padding:0 4px !important;
+}
+
+.moment-frame figcaption::before{
+  content:"“";
+  display:inline-block;
+  margin-right:3px;
+  color:#D6BC78;
+  font-size:1.25em;
+  line-height:0;
+  vertical-align:-.08em;
+}
+
+.moment-frame:nth-child(even) figcaption{
+  text-align:right !important;
+}
+
+/* Let the final photograph dissolve naturally into the charcoal page. */
+.final-image{
+  background:#141312 !important;
+  isolation:isolate;
+}
+
+.final-image > img{
+  -webkit-mask-image:linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0,0,0,.22) 6%,
+    #000 15%,
+    #000 78%,
+    rgba(0,0,0,.72) 90%,
+    transparent 100%
+  ) !important;
+  mask-image:linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0,0,0,.22) 6%,
+    #000 15%,
+    #000 78%,
+    rgba(0,0,0,.72) 90%,
+    transparent 100%
+  ) !important;
+}
+
+.final-overlay{
+  background:
+    linear-gradient(
+      180deg,
+      transparent 0%,
+      transparent 48%,
+      rgba(20,19,18,.10) 68%,
+      rgba(20,19,18,.48) 86%,
+      #141312 100%
+    ) !important;
+}
+
+@media(max-width:560px){
+  .moment-frame figcaption,
+  .moment-frame:nth-child(even) figcaption{
+    left:14px !important;
+    right:14px !important;
+    bottom:12px !important;
+    text-align:left !important;
+    font-size:13px !important;
+    line-height:1.22 !important;
+  }
+
+  .final-image{
+    min-height:650px !important;
+  }
+
+  .final-image > img{
+    -webkit-mask-image:linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0,0,0,.18) 7%,
+      #000 16%,
+      #000 76%,
+      rgba(0,0,0,.70) 90%,
+      transparent 100%
+    ) !important;
+    mask-image:linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0,0,0,.18) 7%,
+      #000 16%,
+      #000 76%,
+      rgba(0,0,0,.70) 90%,
+      transparent 100%
+    ) !important;
+  }
+}
+
+
+/* =========================================================
+   FINAL POLISH — CLEAN MOMENT FRAMES + SEAMLESS CINEMATIC END
+   ========================================================= */
+
+/* Keep every moment quote inside its frame. No floating/overflowing text. */
+.moments-gallery .moment-frame{
+  overflow:hidden !important;
+  box-sizing:border-box !important;
+}
+
+.moments-gallery .moment-frame::after{
+  content:none !important;
+  display:none !important;
+}
+
+.moments-gallery .moment-frame figcaption,
+.moments-gallery .moment-frame:nth-child(even) figcaption{
+  position:relative !important;
+  left:auto !important;
+  right:auto !important;
+  bottom:auto !important;
+  width:auto !important;
+  max-width:100% !important;
+  min-height:3.8em !important;
+  margin:15px 8px 0 !important;
+  padding:0 3px !important;
+  box-sizing:border-box !important;
+  text-align:center !important;
+  color:#E1CC92 !important;
+  font-family:"Cormorant Garamond", Georgia, serif !important;
+  font-size:clamp(14px,1.25vw,17px) !important;
+  line-height:1.28 !important;
+  font-style:italic !important;
+  letter-spacing:.01em !important;
+  overflow-wrap:anywhere !important;
+  word-break:normal !important;
+}
+
+.moments-gallery .moment-frame figcaption::before{
+  content:"“" !important;
+  display:inline !important;
+  margin-right:2px !important;
+  color:#D6BC78 !important;
+  font-size:1.15em !important;
+  line-height:1 !important;
+  vertical-align:-.06em !important;
+}
+
+/* Give the quote a real, predictable text area rather than overlaying it on the image. */
+.moments-gallery .moment-frame{
+  padding-bottom:18px !important;
+}
+
+/* The final photograph should have no opaque text panel: the copy sits directly over it. */
+.final-image,
+.final-copy,
+.final-overlay{
+  background:transparent !important;
+}
+
+.final-image{
+  position:relative !important;
+  isolation:isolate !important;
+  overflow:hidden !important;
+  background:#141312 !important;
+}
+
+.final-image > img{
+  z-index:0 !important;
+  -webkit-mask-image:none !important;
+  mask-image:none !important;
+  opacity:1 !important;
+}
+
+/* A full-width cinematic grade, transparent around the text and strongest only at the bottom. */
+.final-overlay{
+  z-index:1 !important;
+  inset:0 !important;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(20,19,18,0) 0%,
+      rgba(20,19,18,0) 48%,
+      rgba(20,19,18,.10) 67%,
+      rgba(20,19,18,.48) 84%,
+      #141312 100%
+    ) !important;
+  pointer-events:none !important;
+}
+
+.final-copy{
+  z-index:2 !important;
+  background:transparent !important;
+  max-width:min(760px,86vw) !important;
+  padding:0 !important;
+  text-shadow:0 3px 24px rgba(0,0,0,.55) !important;
+}
+
+.final-copy h2,
+.final-copy .eyebrow,
+.final-copy .final-date,
+.final-copy .hashtag{
+  background:transparent !important;
+}
+
+@media(max-width:700px){
+  .moments-gallery .moment-frame figcaption,
+  .moments-gallery .moment-frame:nth-child(even) figcaption{
+    min-height:0 !important;
+    margin:14px 7px 0 !important;
+    padding:0 2px !important;
+    font-size:14px !important;
+    line-height:1.3 !important;
+  }
+
+  .final-copy{
+    left:6vw !important;
+    right:6vw !important;
+    bottom:9% !important;
+    max-width:none !important;
+  }
+
+  .final-copy h2{
+    font-size:clamp(3rem,12vw,5rem) !important;
+    line-height:.9 !important;
+  }
+}
+
+/* =========================================================
+   SCROLL STORY — restrained editorial motion
+   ========================================================= */
+.reveal-on-scroll{
+  opacity:0;
+  transform:translateY(34px);
+  transition:
+    opacity .9s cubic-bezier(.2,.7,.2,1),
+    transform .9s cubic-bezier(.2,.7,.2,1);
+  will-change:opacity,transform;
+}
+
+.reveal-on-scroll.is-visible{
+  opacity:1;
+  transform:none;
+}
+
+.reveal-image{
+  opacity:0;
+  transform:scale(.965) translateY(18px);
+  transition:
+    opacity 1.05s ease,
+    transform 1.15s cubic-bezier(.2,.7,.2,1);
+  will-change:opacity,transform;
+}
+
+.reveal-image.is-visible{
+  opacity:1;
+  transform:scale(1) translateY(0);
+}
+
+.moments-gallery .moment-frame.reveal-image:nth-child(1){transition-delay:.02s}
+.moments-gallery .moment-frame.reveal-image:nth-child(2){transition-delay:.10s}
+.moments-gallery .moment-frame.reveal-image:nth-child(3){transition-delay:.18s}
+.moments-gallery .moment-frame.reveal-image:nth-child(4){transition-delay:.26s}
+.moments-gallery .moment-frame.reveal-image:nth-child(5){transition-delay:.34s}
+
+/* Very subtle image movement as cinematic sections enter view. */
+.visual-break img,
+.final-image > img{
+  transition:transform 1.4s cubic-bezier(.2,.7,.2,1);
+}
+
+.visual-break.is-visible img{
+  transform:scale(1.025);
+}
+
+.final-image.is-visible > img{
+  transform:scale(1.018);
+}
+
+/* Additional editorial motion: section headings and decorative elements gently enter with their section. */
+.reveal-on-scroll .eyebrow,
+.reveal-on-scroll h2,
+.reveal-on-scroll .lead,
+.reveal-on-scroll .section-ornament,
+.reveal-on-scroll .date-motif,
+.reveal-on-scroll .quote,
+.reveal-on-scroll .card,
+.reveal-on-scroll .personal-invite{
+  opacity:0;
+  transform:translateY(18px);
+  transition:opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1);
+}
+.reveal-on-scroll.is-visible .eyebrow,
+.reveal-on-scroll.is-visible h2,
+.reveal-on-scroll.is-visible .lead,
+.reveal-on-scroll.is-visible .section-ornament,
+.reveal-on-scroll.is-visible .date-motif,
+.reveal-on-scroll.is-visible .quote,
+.reveal-on-scroll.is-visible .card,
+.reveal-on-scroll.is-visible .personal-invite{
+  opacity:1;
+  transform:none;
+}
+.reveal-on-scroll.is-visible h2{transition-delay:.08s}
+.reveal-on-scroll.is-visible .lead{transition-delay:.16s}
+.reveal-on-scroll.is-visible .section-ornament,.reveal-on-scroll.is-visible .date-motif{transition-delay:.22s}
+
+/* Moments get a gentle editorial lift as they enter view. */
+.moments-gallery .moment-frame.reveal-image{
+  transform:translateY(28px) scale(.965) rotate(var(--frame-tilt,0deg));
+}
+.moments-gallery .moment-frame.reveal-image.is-visible{
+  transform:translateY(0) scale(1) rotate(var(--frame-tilt,0deg));
+}
+.moments-gallery .moment-frame:nth-child(1){--frame-tilt:-.35deg}
+.moments-gallery .moment-frame:nth-child(2){--frame-tilt:.35deg}
+.moments-gallery .moment-frame:nth-child(3){--frame-tilt:-.2deg}
+.moments-gallery .moment-frame:nth-child(4){--frame-tilt:.25deg}
+.moments-gallery .moment-frame:nth-child(5){--frame-tilt:-.3deg}
+
+@media(prefers-reduced-motion:reduce){
+  .reveal-on-scroll,
+  .reveal-image{
+    opacity:1 !important;
+    transform:none !important;
+    transition:none !important;
+  }
+  .visual-break img,
+  .final-image > img{
+    transition:none !important;
+    transform:none !important;
+  }
+}
+
+
+/* =========================================================
+   FINAL POLISH — EDITORIAL MICRO-INTERACTIONS
+   ========================================================= */
+.scroll-progress{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  height:2px;
+  z-index:3000;
+  pointer-events:none;
+  background:transparent;
+}
+.scroll-progress span{
+  display:block;
+  width:100%;
+  height:100%;
+  transform-origin:left center;
+  transform:scaleX(var(--progress,0));
+  background:linear-gradient(90deg,#9F783B,#E1CC92,#B9914B);
+  box-shadow:0 0 10px rgba(201,164,91,.28);
+}
+
+.music-bars{
+  display:inline-flex;
+  align-items:flex-end;
+  justify-content:center;
+  gap:2px;
+  width:11px;
+  height:10px;
+}
+.music-bars i{
+  display:block;
+  width:2px;
+  height:4px;
+  border-radius:2px;
+  background:var(--gold);
+  opacity:.55;
+}
+.music.is-playing .music-bars i:nth-child(1){animation:musicBar .75s ease-in-out infinite}
+.music.is-playing .music-bars i:nth-child(2){animation:musicBar .75s .16s ease-in-out infinite}
+.music.is-playing .music-bars i:nth-child(3){animation:musicBar .75s .32s ease-in-out infinite}
+@keyframes musicBar{0%,100%{height:3px}50%{height:10px}}
+
+.date-motif{
+  width:min(760px,82vw);
+  margin:clamp(20px,4vw,46px) auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  color:rgba(185,145,75,.68);
+  font-size:.52rem;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+}
+.date-motif span{
+  flex:1;
+  max-width:190px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(185,145,75,.55));
+}
+.date-motif span:last-child{background:linear-gradient(90deg,rgba(185,145,75,.55),transparent)}
+.date-motif b{font-weight:500;white-space:nowrap}
+.date-motif-dark{color:rgba(225,204,146,.5)}
+.date-motif-dark span{background:linear-gradient(90deg,transparent,rgba(225,204,146,.4))}
+.date-motif-dark span:last-child{background:linear-gradient(90deg,rgba(225,204,146,.4),transparent)}
+
+/* Never allow editorial quotes to escape their frame. */
+.moments-gallery .moment-frame figcaption,
+.moments-gallery .moment-frame:nth-child(even) figcaption{
+  box-sizing:border-box !important;
+  width:100% !important;
+  max-width:100% !important;
+  overflow-wrap:break-word !important;
+  word-break:normal !important;
+  hyphens:auto !important;
+  white-space:normal !important;
+}
+.moments-gallery .moment-frame figcaption{
+  text-align:center !important;
+}
+.moments-gallery .moment-frame:nth-child(even) figcaption{
+  text-align:center !important;
+}
+.moments-gallery .moment-frame figcaption::before{content:"“" !important}
+
+/* Cinematic image movement: reveal scale + very restrained scroll parallax. */
+.visual-break img,
+.final-image > img{
+  transform:translate3d(0,var(--parallax-y,0px),0) scale(1.012);
+  will-change:transform;
+}
+.visual-break.is-visible img{transform:translate3d(0,var(--parallax-y,0px),0) scale(1.025)}
+.final-image.is-visible > img{transform:translate3d(0,var(--parallax-y,0px),0) scale(1.018)}
+
+/* Let the opening breathe briefly before dissolving into the story. */
+.real-envelope-opening.is-closing{transition-duration:1.35s !important}
+
+/* Final text remains contained at every viewport size. */
+.final-copy{
+  width:min(760px,86vw) !important;
+  max-width:86vw !important;
+  box-sizing:border-box !important;
+}
+.final-copy h2,
+.final-copy .hashtag,
+.final-copy .final-date{
+  max-width:100% !important;
+  overflow-wrap:anywhere !important;
+}
+
+@media(max-width:700px){
+  .date-motif{width:84vw;margin:24px auto;gap:9px;font-size:.43rem;letter-spacing:.18em}
+  .date-motif span{max-width:90px}
+  .music-bars{width:10px}
+  .final-copy{width:88vw !important;max-width:88vw !important;left:6vw !important;right:6vw !important}
+  .final-copy h2{font-size:clamp(2.75rem,12vw,4.6rem) !important;line-height:.9 !important;letter-spacing:-.025em !important}
+  .final-copy .hashtag{font-size:clamp(.7rem,3vw,.95rem) !important;letter-spacing:.08em !important}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .music.is-playing .music-bars i{animation:none !important}
+  .visual-break img,
+  .final-image > img{transform:none !important}
+}
+
+/* Remove the center ornament from individual photo frames; keep the content unobstructed. */
+.moments-gallery .moment-frame::after{display:none !important;content:none !important;}
